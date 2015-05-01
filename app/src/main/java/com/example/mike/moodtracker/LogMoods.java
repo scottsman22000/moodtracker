@@ -1,19 +1,27 @@
 package com.example.mike.moodtracker;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class LogMoods extends ActionBarActivity {
+public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener {
+
+    BlankFragment moodFragment = new BlankFragment();
+    FragmentManager fragmentManager = getFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_moods); //I took this out we will see if it works
-       // Intent intent = getIntent();//I was supposed to add this
+        setContentView(R.layout.activity_log_moods);
+       // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
     }
 
 
@@ -35,7 +43,21 @@ public class LogMoods extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    public void onMoodClick(View v){
+        fragmentTransaction.add(R.id.blankFragment, moodFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void onFragmentInteraction(Uri uri){
+
+    }
+
+
+
+
+
+
 }
