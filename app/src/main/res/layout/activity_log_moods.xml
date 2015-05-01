@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.mike.moodtracker.LogMoods">
+
+    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="belife"
+        android:id="@+id/BelifeButton"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trigger"
+        android:id="@+id/TriggerButton"
+        android:layout_below="@+id/BelifeButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="37dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mood"
+        android:id="@+id/MoodButton"
+        android:layout_alignTop="@+id/TriggerButton"
+        android:layout_alignLeft="@+id/BelifeButton"
+        android:layout_alignStart="@+id/BelifeButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Behavior"
+        android:id="@+id/BehaviorButton"
+        android:layout_alignTop="@+id/MoodButton"
+        android:layout_toRightOf="@+id/MoodButton"
+        android:layout_toEndOf="@+id/MoodButton"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp" />
+
+</RelativeLayout>

@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LogMoods"
+            android:label="@string/title_activity_log_moods"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mike.moodtracker.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
