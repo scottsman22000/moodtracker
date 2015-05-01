@@ -35,7 +35,8 @@
         android:id="@+id/MoodButton"
         android:layout_alignTop="@+id/TriggerButton"
         android:layout_alignLeft="@+id/BelifeButton"
-        android:layout_alignStart="@+id/BelifeButton" />
+        android:layout_alignStart="@+id/BelifeButton"
+        android:onClick="onMoodClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,5 +48,14 @@
         android:layout_toEndOf="@+id/MoodButton"
         android:layout_marginLeft="37dp"
         android:layout_marginStart="37dp" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/TriggerButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/blankFragment"></FrameLayout>
 
 </RelativeLayout>
