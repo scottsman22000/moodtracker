@@ -6,14 +6,55 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Newest Addition"
-        android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/textView2" />
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:text="Log Mood"
+        android:id="@+id/LogMoodButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="10dp" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Find Patterns"
+        android:id="@+id/FindPatternsButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/LogMoodButton"
+        android:textSize="10dp" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Get Help"
+        android:id="@+id/GetHelpButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/FindPatternsButton"
+        android:textSize="10dp" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="App Help"
+        android:id="@+id/AppHelpButton"
+        android:layout_alignBottom="@+id/GetHelpButton"
+        android:layout_toRightOf="@+id/GetHelpButton"
+        android:textSize="10dp" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="App Preffs"
+        android:id="@+id/AppPreffsButton"
+        android:layout_alignBottom="@+id/AppHelpButton"
+        android:layout_toRightOf="@+id/AppHelpButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="10dp" />
 
 </RelativeLayout>
