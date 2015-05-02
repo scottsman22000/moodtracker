@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.mike.moodtracker.BlankFragment">
+    android:layout_height="match_parent" tools:context="com.example.mike.moodtracker.MyMoodsList">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
@@ -9,17 +9,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Moods"
-        android:id="@+id/SearchMoodsButton"
-        android:layout_gravity="center"
-        />
+        android:text="Annotation"
+        android:id="@+id/AnnotationButton"
+        android:layout_gravity="right|top" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:text="My Moods"
-        android:id="@+id/MyMoodsButton"
-        android:onClick="onMyMoodsClick"
-        android:layout_gravity="left|center_vertical" />
+        android:id="@+id/listView"
+        android:layout_gravity="left|center_vertical"
+        android:choiceMode="singleChoice" />
 
 </FrameLayout>
