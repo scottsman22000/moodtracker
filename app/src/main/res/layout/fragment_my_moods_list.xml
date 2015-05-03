@@ -2,9 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.example.mike.moodtracker.MyMoodsList">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
 
     <Button
         android:layout_width="wrap_content"
@@ -13,11 +11,26 @@
         android:id="@+id/AnnotationButton"
         android:layout_gravity="right|top" />
 
-    <ListView
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="400dp"
         android:layout_gravity="left|center_vertical"
-        android:choiceMode="singleChoice" />
+        android:id="@+id/layoutForList"
+        android:background="#ff71ff32"
+        android:visibility="visible"
+        android:weightSum="1">
+
+        <ListView
+            android:layout_width="161dp"
+            android:layout_height="297dp"
+            android:id="@+id/listViewInLayout"
+            android:background="#fffffbc7"
+            android:visibility="visible"
+            android:textFilterEnabled="true"
+            android:layout_weight="0.78"
+            android:layout_marginTop="25dp" />
+    </LinearLayout>
+
 
 </FrameLayout>

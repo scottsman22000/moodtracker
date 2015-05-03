@@ -1,12 +1,25 @@
 package com.example.mike.moodtracker;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+
+
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 /**
@@ -28,6 +41,15 @@ public class MyMoodsList extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    public String[] listOfMoods = {"happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed"};
+
+
+    public ArrayAdapter arrayAdapter;
+    public ListView lv;
+    public View layoutLIst;
+
+    public Context ctx;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -58,13 +80,32 @@ public class MyMoodsList extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        ctx = getActivity().getApplicationContext();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_moods_list, container, false);
+
+
+
+
+        View view = inflater.inflate(R.layout.fragment_my_moods_list, container, false);
+
+
+        layoutLIst = view.findViewById(R.id.layoutForList);
+
+        lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
+
+        arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
+
+        lv.setAdapter(arrayAdapter);
+
+        lv.setTextFilterEnabled(true);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
