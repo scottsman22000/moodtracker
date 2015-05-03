@@ -41,7 +41,7 @@ public class MyMoodsList extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    public String[] listOfMoods = {"happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed"};
+    public String[] listOfMoods = {"Happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed","Anxious", "Calm", "Cranky", "Stressed"};
 
 
     public ArrayAdapter arrayAdapter;
