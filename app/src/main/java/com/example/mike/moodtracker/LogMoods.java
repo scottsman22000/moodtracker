@@ -57,9 +57,11 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     public void onMoodClick(View v){
         moodFragment = new BlankFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(moodFragment);
+       // fragmentTransaction.remove(moodFragment);
 
-        fragmentTransaction.add(R.id.frameLayout, moodFragment);
+        //fragmentTransaction.add(R.id.frameLayout, moodFragment);
+        fragmentTransaction.replace(R.id.frameLayout, moodFragment);
+
         fragmentTransaction.commit();
     }
 
@@ -68,9 +70,10 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         Log.i("", "In clickedMyMoods() of LogMoods");
         myMoodsList = new MyMoodsList();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(moodFragment);
+       // fragmentTransaction.remove(moodFragment);
 
-        fragmentTransaction.add(R.id.frameLayout, myMoodsList);
+        //fragmentTransaction.add(R.id.frameLayout, myMoodsList);
+        fragmentTransaction.replace(R.id.frameLayout,myMoodsList);
         fragmentTransaction.commit();
     }
 
