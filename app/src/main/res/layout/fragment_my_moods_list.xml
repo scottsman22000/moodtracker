@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.example.mike.moodtracker.MyMoodsList">
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annotation"
+        android:id="@+id/AnnotationButton"
+        android:layout_gravity="right|top" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="400dp"
+        android:layout_gravity="left|center_vertical"
+        android:id="@+id/layoutForList"
+        android:background="#ff71ff32"
+        android:visibility="visible"
+        android:weightSum="1">
+
+        <ListView
+            android:layout_width="161dp"
+            android:layout_height="297dp"
+            android:id="@+id/listViewInLayout"
+            android:background="#fffffbc7"
+            android:visibility="visible"
+            android:textFilterEnabled="true"
+            android:layout_weight="0.78"
+            android:layout_marginTop="25dp" />
+    </LinearLayout>
+
+
+</FrameLayout>
