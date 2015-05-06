@@ -2,8 +2,6 @@ package com.example.mike.moodtracker;
 
 import java.util.*;
 
-//yay brad did something
-
 public class HelpBuilder{
 
 CopingStrategy[] copingStrategies;
