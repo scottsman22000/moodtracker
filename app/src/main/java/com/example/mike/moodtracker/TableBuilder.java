@@ -5,17 +5,50 @@ package com.example.mike.moodtracker;
  */
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.*;
 import java.text.*;
 
 
-public class TableBuilder {
+public class TableBuilder extends ActionBarActivity {
     private static final int NUMBER_OF_MAXIMUMS = 3;
     private static final DecimalFormat df = new DecimalFormat("%##0.00");
     private static ArrayList<MoodData> fakeData = new ArrayList<MoodData>();
     private Context context;
     private DBaccessor dba;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_table_builder);
+        Log.i("", "in onCreate of FindPatterns??????????????????????????????????????");
+        // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_find_patterns, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private static class Duple implements Comparable<Duple> {
         Integer index;
@@ -47,6 +80,10 @@ public class TableBuilder {
         //new TableBuilder().buildTable(null, null, new Mood("Tender", 0, ""));
         GregorianCalendar g = new GregorianCalendar();
         System.err.print(buildString(g));
+    }
+
+    public TableBuilder(){
+
     }
 
     public TableBuilder(Context context) {
