@@ -107,7 +107,7 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        moodToBeDisplayed = (EditText)view.findViewById(R.id.textPickedMood);
+        moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
 
         return view;
     }
