@@ -77,6 +77,10 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         fragmentTransaction.commit();
     }
 
+   // public void onMyMoodsListViewClick(View view){
+     //   Log.i("", "THe ONMYLISTVIEWCLICK got clickked!!!!!!!!!!!!!");
+   // }
+
     public void onFragmentInteraction(Uri uri){
         Log.i("","We are here in the activity...yay");
     }

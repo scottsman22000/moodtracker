@@ -6,14 +6,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,8 +50,12 @@ public class MyMoodsList extends Fragment {
     public ArrayAdapter arrayAdapter;
     public ListView lv;
     public View layoutLIst;
-
     public Context ctx;
+
+    public EditText moodText;
+    public EditText intesityText;
+
+    public String pickedMood;
 
 
     /**
@@ -89,21 +96,13 @@ public class MyMoodsList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-
         View view = inflater.inflate(R.layout.fragment_my_moods_list, container, false);
-
-
         layoutLIst = view.findViewById(R.id.layoutForList);
-
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
-
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
-
         lv.setAdapter(arrayAdapter);
-
         lv.setTextFilterEnabled(true);
+        lv.setOnItemClickListener(new ListClickHandler());
 
         return view;
     }
@@ -145,6 +144,26 @@ public class MyMoodsList extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public class ListClickHandler implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> arrayAdapter, View view, int position, long arg3) {
+            // TODO Auto-generated method stub
+            //TextView listText = (TextView) view.findViewById(R.id.listViewInLayout).findViewById(android.R.id);
+             //pickedMood = listText.getText().toString();
+            //int itemPosition     = position;
+
+            // ListView Clicked item value
+           pickedMood    = (String) lv.getItemAtPosition(position);
+            //moodText.setText(pickedMood.toString());
+
+            Log.i("", "this is the pickedMood: " + pickedMood);
+
+
+        }
+
     }
 
 }
