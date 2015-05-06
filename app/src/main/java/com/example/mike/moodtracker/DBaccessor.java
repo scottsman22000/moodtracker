@@ -117,7 +117,7 @@ public class DBaccessor extends SQLiteOpenHelper {
         String CREATE_MOOD_DATA_TABLE = "CREATE TABLE " +
                 "MOOD_DATA" + "("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "timestape" + " datetime default current_timestamp,"
+                + "timestamp" + " datetime default current_timestamp,"
                 + "mood" + " TEXT NOT NULL,"
                 + "trigger" + " TEXT,"
                 + "belief" + " TEXT,"
@@ -279,6 +279,117 @@ public class DBaccessor extends SQLiteOpenHelper {
 
         return returnList;
     }
+
+    //Get between date. Date format
+    //select * from tbl_name where Attribute_name between 'yyyy-mm-dd' and 'yyyy-mm-dd';
+
+    public List<MoodData> getMoodDataBetweenDates(String firstDate, String secondDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<MoodData> returnList = new ArrayList<MoodData>();
+
+        String query = String.format("SELECT * FROM MOOD_DATA WHERE timestamp BETWEEN '%s' and '%s';", firstDate, secondDate);
+        Log.d("q", query);
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        do {
+            //Log.d("DB", cursor.getString((1)));
+            Mood m = new Mood(cursor.getString(2), cursor.getFloat(6), cursor.getString(7));
+            Trigger t = new Trigger(cursor.getString(3), cursor.getString(8));
+            Belief be = new Belief(cursor.getString(4), cursor.getString(9));
+            Behavior bh = new Behavior(cursor.getString(5), cursor.getString(10));
+            MoodData md = new MoodData(m);
+            md.behavior = bh;
+            md.belief = be;
+            md.trigger = t;
+            returnList.add(md);
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+
+    }
+
+    public List<String> getMoodsFromCopingID(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM MOOD WHERE copingID = " + id, null);
+        cursor.moveToFirst();
+        do {
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+
+    }
+
+    public List<String> getBeliefsFromCopingID(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM BELIEF WHERE copingID = " + id, null);
+        cursor.moveToFirst();
+        do {
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+
+    }
+
+    public List<String> getTriggerFromCopingID(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM TRIGGER WHERE copingID = " + id, null);
+        cursor.moveToFirst();
+        do {
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+
+    }
+
+    public List<String> getBehaviorFromCopingID(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM BEHAVIOR WHERE copingID = " + id, null);
+        cursor.moveToFirst();
+        do {
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+
+    }
+
+    public int getCopingIDFromMood(String mood) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = String.format("SELECT copingID FROM MOOD WHERE moodString = '%s'", mood);
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int r;
+        do {
+
+            r = cursor.getInt(0);
+        } while (cursor.moveToNext());
+
+        cursor.close();
+        return r;
+    }
+
 
 
 }
