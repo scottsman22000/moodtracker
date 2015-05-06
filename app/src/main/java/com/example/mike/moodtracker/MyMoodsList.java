@@ -157,7 +157,8 @@ public class MyMoodsList extends Fragment {
 
             // ListView Clicked item value
            pickedMood    = (String) lv.getItemAtPosition(position);
-            //moodText.setText(pickedMood.toString());
+            moodText = (EditText) view.findViewById(R.id.textPickedMood);
+            moodText.setText(pickedMood);
 
             Log.i("", "this is the pickedMood: " + pickedMood);
 
