@@ -1,8 +1,9 @@
 package com.example.mike.moodtracker;
-
+import java.util.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.database.*;
 import android.util.Log;
 /**
  * Created by HP on 5/1/2015.
@@ -200,6 +201,21 @@ public class DBaccessor extends SQLiteOpenHelper {
         db.execSQL(data);
     }
 
+    /*
+    public List<String> getAllMoods(){
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM MOOD", null);
 
+        cursor.moveToFirst();
+        do {
 
+            returnList.Add(cursor.getString(0));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+    }
+*/
 }

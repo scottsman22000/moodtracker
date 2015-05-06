@@ -12,7 +12,7 @@ import android.view.View;
 import android.text.TextUtils;
 import android.util.Log;
 import java.util.*;
-
+import java.util.List;
 
 public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener {
 
@@ -54,7 +54,9 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
             DBaccessor dbTest = new DBaccessor(getApplicationContext());
 
 
-            dbTest.insertMoodData("Happy", "Happy2", null, null, 0.66, "MoodAnnotation", null, null, null);
+           dbTest.addMoodToDatabase("Happy", 0);
+        dbTest.addMoodToDatabase("Sad", 0);
+
             fragmentTransaction.replace(R.id.blankFragment, moodFragment, "LOG_SEARCH_fragment");
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.addToBackStack(null);
