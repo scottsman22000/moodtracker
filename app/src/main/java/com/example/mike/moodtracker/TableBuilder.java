@@ -4,14 +4,48 @@ package com.example.mike.moodtracker;
  * Created by Michael on 5/5/2015.
  */
 
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import java.util.*;
 import java.text.*;
 
 
-public class TableBuilder {
+public class TableBuilder extends ActionBarActivity {
     private static final int NUMBER_OF_MAXIMUMS = 3;
     private static final DecimalFormat df = new DecimalFormat("%##0.00");
     private static ArrayList<MoodData> fakeData = new ArrayList<MoodData>();
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_table_builder);
+        Log.i("", "in onCreate of TableBuilder??????????????????????????????????????");
+        // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_find_patterns, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private static class Duple implements Comparable<Duple> {
         Integer index;
@@ -43,7 +77,7 @@ public class TableBuilder {
         buildTable(null, null, new Mood("Tender", 0, ""));
     }
 
-    private TableBuilder() {
+    public TableBuilder() {
     }
 
     public static String buildTable(GregorianCalendar startTime, GregorianCalendar endTime, Mood mood) {
