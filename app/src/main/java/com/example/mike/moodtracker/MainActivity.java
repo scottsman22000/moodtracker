@@ -154,4 +154,10 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, LogMoods.class);//i need to add the kind of activity that i want
         startActivity(intent);
     }
+
+    public void createFindPatternsPage(View view){
+        Intent intent = new Intent(this, FindPatterns.class);//i need to add the kind of activity that i want
+        startActivity(intent);
+    }
+
 }
