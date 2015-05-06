@@ -11,25 +11,30 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 
+import java.util.*;
 
-public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener {
-
-   // BlankFragment moodFragment = new BlankFragment();
-    BlankFragment moodFragment;
-    MyMoodsList myMoodsList;
+public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener, SearchMoodsList.OnFragmentInteractionListener {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    // BlankFragment moodFragment = new BlankFragment();
+    BlankFragment moodFragment;
+    MyMoodsList myMoodsList;
+    SearchMoodsList searchMoodsList;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentManager = getFragmentManager();
         setContentView(R.layout.activity_log_moods);
-       Log.i("", "in onCreate of LogMoods???????????????????????????????????????");
-       // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
+        Log.i("", "in onCreate of LogMoods???????????????????????????????????????");
+        // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
     }
 
 
@@ -54,32 +59,40 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         return super.onOptionsItemSelected(item);
     }
 
-    public void onMoodClick(View v){
+    public void onMoodClick(View v) {
         moodFragment = new BlankFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
-       // fragmentTransaction.remove(moodFragment);
+        // fragmentTransaction.remove(moodFragment);
 
         //fragmentTransaction.add(R.id.frameLayout, moodFragment);
         fragmentTransaction.replace(R.id.frameLayout, moodFragment);
 
+
         fragmentTransaction.commit();
     }
-
-
     public void onMyMoodsClick(View v) {
         Log.i("", "In clickedMyMoods() of LogMoods");
         myMoodsList = new MyMoodsList();
         fragmentTransaction = fragmentManager.beginTransaction();
-       // fragmentTransaction.remove(moodFragment);
+        // fragmentTransaction.remove(moodFragment);
 
         //fragmentTransaction.add(R.id.frameLayout, myMoodsList);
         fragmentTransaction.replace(R.id.frameLayout,myMoodsList);
         fragmentTransaction.commit();
     }
 
-    public void onFragmentInteraction(Uri uri){
-        Log.i("","We are here in the activity...yay");
+    public void onSearchMoodsClick(View v){
+        searchMoodsList = new SearchMoodsList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,searchMoodsList);
+        fragmentTransaction.commit();
     }
+
+    public void onFragmentInteraction(Uri uri){
+
+    }
+
+
 
 
 

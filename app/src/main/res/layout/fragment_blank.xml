@@ -12,7 +12,7 @@
         android:text="Search Moods"
         android:id="@+id/SearchMoodsButton"
         android:layout_gravity="center"
-        />
+        android:onClick="onSearchMoodsClick" />
 
     <Button
         android:layout_width="wrap_content"

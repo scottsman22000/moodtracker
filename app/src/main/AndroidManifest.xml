@@ -24,6 +24,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mike.moodtracker.MainActivity" />
         </activity>
+
     </application>
 
 </manifest>
