@@ -6,5 +6,6 @@ public class CopingStrategy{
 
     public String copingStrategy;
     public int rating;
-    
+
+
 }
