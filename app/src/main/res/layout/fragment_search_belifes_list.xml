@@ -1,8 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mike.moodtracker.SearchMoodsList"
+    tools:context="com.example.mike.moodtracker.searchBelifesList"
     android:textAlignment="viewStart">
+
+  
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,20 +29,11 @@
 
     </LinearLayout>
 
-    <SeekBar
-        android:layout_width="183dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_gravity="center_horizontal|bottom"
-        android:indeterminate="false"
-        android:max="10"
-        android:progress="5" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Mood: "
+        android:text="Belife:"
         android:id="@+id/textView4"
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="65dp" />

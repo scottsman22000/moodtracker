@@ -1,8 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mike.moodtracker.SearchMoodsList"
-    android:textAlignment="viewStart">
+    tools:context="com.example.mike.moodtracker.MyBehaviorsList">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annotation"
+        android:id="@+id/AnnotationButton"
+        android:layout_gravity="right|bottom"
+        android:onClick="onAnnotationClick"
+        android:layout_marginBottom="150dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,20 +35,11 @@
 
     </LinearLayout>
 
-    <SeekBar
-        android:layout_width="183dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_gravity="center_horizontal|bottom"
-        android:indeterminate="false"
-        android:max="10"
-        android:progress="5" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Mood: "
+        android:text="Behavior:"
         android:id="@+id/textView4"
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="65dp" />
@@ -51,7 +50,7 @@
         android:id="@+id/textMoodPicked"
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="65dp"
-        android:layout_marginLeft="50dp" />
+        android:layout_marginLeft="70dp" />
 
     <EditText
         android:layout_width="160dp"
@@ -62,14 +61,5 @@
         android:imeOptions="actionDone"
         android:textSize="15dp"
         android:singleLine="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Annotation"
-        android:id="@+id/AnnotationButton"
-        android:layout_gravity="right|bottom"
-        android:onClick="onAnnotationClick"
-        android:layout_marginBottom="150dp" />
 
 </FrameLayout>

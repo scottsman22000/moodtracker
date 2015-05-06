@@ -17,7 +17,7 @@ import android.widget.Button;
 
 import java.util.*;
 
-public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener, SearchMoodsList.OnFragmentInteractionListener {
+public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener, SearchMoodsList.OnFragmentInteractionListener, TriggerFragment.OnFragmentInteractionListener , MyTriggerList.OnFragmentInteractionListener, searchTriggerList.OnFragmentInteractionListener, BelifeFragment.OnFragmentInteractionListener, myBelifesList.OnFragmentInteractionListener, searchBelifesList.OnFragmentInteractionListener, BehaviorsFragment.OnFragmentInteractionListener, searchBehaviorsList.OnFragmentInteractionListener, MyBehaviorsList.OnFragmentInteractionListener {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -25,6 +25,15 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     BlankFragment moodFragment;
     MyMoodsList myMoodsList;
     SearchMoodsList searchMoodsList;
+    TriggerFragment triggerFragment;
+    MyTriggerList myTriggerList;
+    searchTriggerList searchTriggerList;
+    myBelifesList myBelifesList;
+    BelifeFragment belifeFragment;
+    searchBelifesList searchBelifesList;
+    BehaviorsFragment behaviorsFragment;
+    searchBehaviorsList searchBehaviorsList;
+    MyBehaviorsList myBehaviorsList;
 
 
 
@@ -70,14 +79,26 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
 
         fragmentTransaction.commit();
     }
+
+    public void onTriggerClick(View v){
+        triggerFragment = new TriggerFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, triggerFragment);
+        fragmentTransaction.commit();
+    }
+
     public void onMyMoodsClick(View v) {
         Log.i("", "In clickedMyMoods() of LogMoods");
         myMoodsList = new MyMoodsList();
         fragmentTransaction = fragmentManager.beginTransaction();
-        // fragmentTransaction.remove(moodFragment);
-
-        //fragmentTransaction.add(R.id.frameLayout, myMoodsList);
         fragmentTransaction.replace(R.id.frameLayout,myMoodsList);
+        fragmentTransaction.commit();
+    }
+
+    public void onMyTriggerListClick(View v){
+        myTriggerList = new MyTriggerList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, myTriggerList);
         fragmentTransaction.commit();
     }
 
@@ -87,6 +108,59 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         fragmentTransaction.replace(R.id.frameLayout,searchMoodsList);
         fragmentTransaction.commit();
     }
+
+    public void onSearchTriggersClick(View v){
+        searchTriggerList = new searchTriggerList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, searchTriggerList);
+        fragmentTransaction.commit();
+    }
+
+    public void onBelifeClick(View v){
+        belifeFragment = new BelifeFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, belifeFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void onMyBelifeClick(View v){
+        myBelifesList = new myBelifesList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, myBelifesList);
+        fragmentTransaction.commit();
+    }
+
+    public void onSearchBelifesListClicked(View v){
+        searchBelifesList = new searchBelifesList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, searchBelifesList);
+        fragmentTransaction.commit();
+    }
+
+    public void onBehviorClick(View v){
+        behaviorsFragment = new BehaviorsFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, behaviorsFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void onMyBehaviorClick(View v){
+        myBehaviorsList = new MyBehaviorsList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,myBehaviorsList);
+        fragmentTransaction.commit();
+    }
+
+    public void onSearchBehviorClick(View v){
+        searchBehaviorsList = new searchBehaviorsList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, searchBehaviorsList);
+        fragmentTransaction.commit();
+
+    }
+
+
+
 
     public void onFragmentInteraction(Uri uri){
 
