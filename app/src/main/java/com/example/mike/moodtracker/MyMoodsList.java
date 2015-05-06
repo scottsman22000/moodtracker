@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.content.Context;
 import android.widget.TextView;
 
-
+import java.util.List;
 
 
 /**
@@ -50,7 +50,7 @@ public class MyMoodsList extends Fragment {
     public ListView lv;
     public View layoutLIst;
     public Context ctx;
-    public EditText moodToBeDisplayed;
+    public TextView moodToBeDisplayed;
     public EditText moodText;
     public EditText intesityText;
 
@@ -104,7 +104,8 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
+        lv.setOnItemClickListener(new ListClickHandler());
+        moodToBeDisplayed = (TextView)view.findViewById(R.id.textMoodPicked);
 
         return view;
     }

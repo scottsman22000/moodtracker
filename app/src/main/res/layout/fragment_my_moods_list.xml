@@ -54,15 +54,13 @@
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="90dp" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textPickedMood"
+        android:id="@+id/textMoodPicked"
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="90dp"
-        android:layout_marginLeft="50dp"
-        android:editable="true" />
+        android:layout_marginLeft="50dp" />
 
 
 </FrameLayout>
