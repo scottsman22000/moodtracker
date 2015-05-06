@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mike.moodtracker.SearchMoodsList">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:layout_gravity="left|top"
+        android:id="@+id/layoutForList"
+        android:background="#ff71ff32"
+        android:visibility="visible"
+        android:weightSum="1">
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/listViewInLayout"
+            android:background="#fffffbc7"
+            android:visibility="visible"
+            android:textFilterEnabled="true"
+            android:layout_weight="0.78"
+            android:clickable="false" />
+
+
+    </LinearLayout>
+
+    <SeekBar
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_gravity="center_horizontal|bottom"
+        android:indeterminate="false"
+        android:max="10"
+        android:progress="5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mood: "
+        android:id="@+id/textView4"
+        android:layout_gravity="center|bottom|left"
+        android:layout_marginBottom="65dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textMoodPicked"
+        android:layout_gravity="center|bottom|left"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="50dp" />
+
+    <EditText
+        android:layout_width="160dp"
+        android:layout_height="320dp"
+        android:id="@+id/annotationText"
+        android:layout_gravity="center|right|top"
+        android:hint="Add Annotation Here"
+        android:imeOptions="actionDone"
+        android:paddingBottom="295dp"
+        android:textSize="15dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annotation"
+        android:id="@+id/AnnotationButton"
+        android:layout_gravity="right|bottom"
+        android:onClick="onAnnotationClick"
+        android:layout_marginBottom="150dp" />
+
+</FrameLayout>

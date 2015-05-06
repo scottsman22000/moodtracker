@@ -17,13 +17,14 @@ import android.widget.Button;
 
 import java.util.*;
 
-public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener {
+public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener, SearchMoodsList.OnFragmentInteractionListener {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     // BlankFragment moodFragment = new BlankFragment();
     BlankFragment moodFragment;
     MyMoodsList myMoodsList;
+    SearchMoodsList searchMoodsList;
 
 
 
@@ -80,9 +81,18 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         fragmentTransaction.commit();
     }
 
+    public void onSearchMoodsClick(View v){
+        searchMoodsList = new SearchMoodsList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,searchMoodsList);
+        fragmentTransaction.commit();
+    }
+
     public void onFragmentInteraction(Uri uri){
 
     }
+
+
 
 
 
