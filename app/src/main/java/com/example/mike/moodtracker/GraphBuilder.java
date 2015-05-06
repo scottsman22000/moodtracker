@@ -2,6 +2,8 @@ package com.example.mike.moodtracker;
 
 import java.util.*;
 
+import android.app.Activity;
+
 public class GraphBuilder extends Activity{
 
     MoodData[] moodData;
