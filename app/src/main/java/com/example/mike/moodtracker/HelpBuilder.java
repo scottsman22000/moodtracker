@@ -2,7 +2,7 @@ package com.example.mike.moodtracker;
 
 import java.util.*;
 
-public class HelpBuilder{
+public class HelpBuilder extends Activity{
 
 CopingStrategy[] copingStrategies;
 
