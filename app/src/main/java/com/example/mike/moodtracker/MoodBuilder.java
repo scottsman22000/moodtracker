@@ -23,7 +23,7 @@ public class MoodBuilder extends Activity{
     }
 
     public void submitMoodData(){
-        //submit mood data to database
+        //submit mood data to database using dbAccessor
     }
 
 }
