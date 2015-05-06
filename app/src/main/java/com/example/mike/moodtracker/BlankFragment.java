@@ -119,11 +119,11 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
         public void onFragmentInteraction(Uri uri);
     }
 
-   public void onMyMoodsClick(View v){
-       Log.i("","clicked myMoods button");
-       LogMoods activity = (LogMoods) getActivity();
-       activity.onMyMoodsClick(v);
-   }
+  // public void onMyMoodsClick(View v){
+    //   Log.i("","clicked myMoods button");
+      // LogMoods activity = (LogMoods) getActivity();
+       //activity.onMyMoodsClick(v);
+   //}
 
 
 
