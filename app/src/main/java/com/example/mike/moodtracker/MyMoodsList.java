@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Context;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -56,6 +58,9 @@ public class MyMoodsList extends Fragment {
     public EditText intesityText;
 
     public String pickedMood;
+
+
+    public String pickedMood = null;
 
 
     /**
@@ -104,7 +109,7 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        lv.setOnItemClickListener(new ListClickHandler());
+
 
         return view;
     }
@@ -158,9 +163,15 @@ public class MyMoodsList extends Fragment {
             //int itemPosition     = position;
 
             // ListView Clicked item value
-           pickedMood    = (String) lv.getItemAtPosition(position);
-            moodText = (EditText) view.findViewById(R.id.textPickedMood);
-            moodText.setText(pickedMood);
+           pickedMood = (String) lv.getItemAtPosition(position);
+            //moodText = (EditText) findViewById(R.id.textPickedMood);
+            Log.i("", "this is the pickedMood the firsst time: " + pickedMood);
+            //moodToBeDisplayed = new EditText(ctx);
+           // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
+
+
+
+            moodToBeDisplayed.setText(pickedMood);
 
             Log.i("", "this is the pickedMood: " + pickedMood);
 
