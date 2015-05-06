@@ -53,11 +53,9 @@ public class MyMoodsList extends Fragment {
     public ListView lv;
     public View layoutLIst;
     public Context ctx;
-
+    public EditText moodToBeDisplayed;
     public EditText moodText;
     public EditText intesityText;
-
-    public String pickedMood;
 
 
     public String pickedMood = null;
@@ -109,7 +107,7 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-
+        moodToBeDisplayed = (EditText)view.findViewById(R.id.textPickedMood);
 
         return view;
     }

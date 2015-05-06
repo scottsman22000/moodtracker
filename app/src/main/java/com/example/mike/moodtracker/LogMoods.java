@@ -58,7 +58,7 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         return super.onOptionsItemSelected(item);
     }
 
-    public void onMoodClick(View v){
+    public void onMoodClick(View v) {
         moodFragment = new BlankFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
         // fragmentTransaction.remove(moodFragment);
@@ -67,8 +67,8 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         fragmentTransaction.replace(R.id.frameLayout, moodFragment);
 
 
-            fragmentTransaction.commit();
-
+        fragmentTransaction.commit();
+    }
     public void onMyMoodsClick(View v) {
         Log.i("", "In clickedMyMoods() of LogMoods");
         myMoodsList = new MyMoodsList();
