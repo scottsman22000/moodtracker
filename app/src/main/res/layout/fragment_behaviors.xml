@@ -1,0 +1,23 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mike.moodtracker.BehaviorsFragment">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Behaviors"
+        android:id="@+id/SearchMoodsButton"
+        android:layout_gravity="center"
+        android:onClick="onSearchBehviorClick"
+        android:layout_marginLeft="40dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Behaviors"
+        android:id="@+id/MyMoodsButton"
+        android:onClick="onMyBehaviorClick"
+        android:layout_gravity="left|center_vertical" />
+
+</FrameLayout>

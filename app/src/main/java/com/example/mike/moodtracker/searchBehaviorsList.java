@@ -5,21 +5,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.content.Context;
 import android.widget.TextView;
 
 import java.util.List;
@@ -28,12 +22,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MyMoodsList.OnFragmentInteractionListener} interface
+ * {@link searchBehaviorsList.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MyMoodsList#newInstance} factory method to
+ * Use the {@link searchBehaviorsList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyMoodsList extends Fragment {
+public class searchBehaviorsList extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,12 +48,11 @@ public class MyMoodsList extends Fragment {
     public TextView moodToBeDisplayed;
     public EditText moodText;
     public EditText intesityText;
-    public EditText annotationBox;
     public String annotationMessage;
+    public EditText annotationBox;
 
 
     public String pickedMood = null;
-
 
     /**
      * Use this factory method to create a new instance of
@@ -67,11 +60,11 @@ public class MyMoodsList extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MyMoodsList.
+     * @return A new instance of fragment searchBehaviorsList.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyMoodsList newInstance(String param1, String param2) {
-        MyMoodsList fragment = new MyMoodsList();
+    public static searchBehaviorsList newInstance(String param1, String param2) {
+        searchBehaviorsList fragment = new searchBehaviorsList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,7 +72,7 @@ public class MyMoodsList extends Fragment {
         return fragment;
     }
 
-    public MyMoodsList() {
+    public searchBehaviorsList() {
         // Required empty public constructor
     }
 
@@ -90,18 +83,19 @@ public class MyMoodsList extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
         ctx = getActivity().getApplicationContext();
+        //zach this is where you can change the DBAccess call to get the search Triggers instead
+        //of the myMoods
         DBaccessor d = new DBaccessor(ctx);
-         moodList = d.getAllMoods();
-         listOfMoods = moodList.toArray(new String[moodList.size()]);
+        moodList = d.getAllBehaviors();//this needs to change
+        listOfMoods = moodList.toArray(new String[moodList.size()]);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_my_moods_list, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_search_behaviors_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
@@ -117,11 +111,13 @@ public class MyMoodsList extends Fragment {
             public void onClick(View v)
             {
                 annotationMessage = annotationBox.getText().toString();
-                Log.i("","thisis the annotation message that is bieng saved: "+annotationMessage);
+                Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
 
             }
         });
+
+
 
         return view;
     }
@@ -170,12 +166,22 @@ public class MyMoodsList extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> arrayAdapter, View view, int position, long arg3) {
             // TODO Auto-generated method stub
-           pickedMood = (String) lv.getItemAtPosition(position);
-            Log.i("", "this is the pickedMood the firsst time: " + pickedMood);
+            //TextView listText = (TextView) view.findViewById(R.id.listViewInLayout).findViewById(android.R.id);
+            //pickedMood = listText.getText().toString();
+            //int itemPosition     = position;
+
+            // ListView Clicked item value
+            pickedMood = (String) lv.getItemAtPosition(position);
+            //moodText = (EditText) findViewById(R.id.textPickedMood);
+            Log.i("", "this is the pickedtrigger the firsst time: " + pickedMood);
+            //moodToBeDisplayed = new EditText(ctx);
+            // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
+
+
 
             moodToBeDisplayed.setText(pickedMood);
 
-            Log.i("", "this is the pickedMood: " + pickedMood);
+            Log.i("", "this is the pickedtrigger: " + pickedMood);
 
 
         }

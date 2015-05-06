@@ -24,7 +24,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mike.moodtracker.MainActivity" />
         </activity>
-
+        <activity
+            android:name=".FindPatterns"
+            android:label="Find Patterns"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mike.moodtracker.MainActivity" />
+        </activity>
+        <activity
+            android:name=".TableBuilder"
+            android:label="Table"
+            android:parentActivityName=".FindPatterns" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mike.moodtracker.FindPatterns" />
+        </activity>
     </application>
 
 </manifest>

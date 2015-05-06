@@ -23,10 +23,11 @@
         android:id="@+id/FindPatternsButton"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/LogMoodButton"
-        android:textSize="10dp" />
+        android:textSize="10dp"
+        android:onClick="createFindPatternsPage"/>
 
     <Button
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="Get Help"
         android:id="@+id/GetHelpButton"
@@ -46,7 +47,7 @@
     <Button
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:text="App Preffs"
+        android:text="App Prefs"
         android:id="@+id/AppPreffsButton"
         android:layout_alignBottom="@+id/AppHelpButton"
         android:layout_toRightOf="@+id/AppHelpButton"
