@@ -23,7 +23,8 @@
         android:id="@+id/FindPatternsButton"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/LogMoodButton"
-        android:textSize="10dp" />
+        android:textSize="10dp"
+        android:onClick="createFindPatternsPage"/>
 
     <Button
         android:layout_width="70dp"
