@@ -2,6 +2,8 @@ package com.example.mike.moodtracker;
 
 import java.util.*;
 
+import android.app.Activity;
+
 public class MoodBuilder extends Activity{
 
     public MoodData moodData;
