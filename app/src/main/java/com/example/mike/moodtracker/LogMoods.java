@@ -1,34 +1,29 @@
 package com.example.mike.moodtracker;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.text.TextUtils;
+import android.util.Log;
+import java.util.*;
 
 
-public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener {
+public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener {
 
-   // BlankFragment moodFragment = new BlankFragment();
-    BlankFragment moodFragment;
-    MyMoodsList myMoodsList;
-
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
+    BlankFragment moodFragment = new BlankFragment();
+    FragmentManager fragmentManager = getFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragmentManager = getFragmentManager();
         setContentView(R.layout.activity_log_moods);
-       Log.i("", "in onCreate of LogMoods???????????????????????????????????????");
        // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
     }
 
@@ -55,26 +50,19 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     }
 
     public void onMoodClick(View v){
-        moodFragment = new BlankFragment();
-        fragmentTransaction = fragmentManager.beginTransaction();
-       // fragmentTransaction.remove(moodFragment);
 
-        //fragmentTransaction.add(R.id.frameLayout, moodFragment);
-        fragmentTransaction.replace(R.id.frameLayout, moodFragment);
-
-        fragmentTransaction.commit();
-    }
+            DBaccessor dbTest = new DBaccessor(getApplicationContext());
 
 
-    public void onMyMoodsClick(View v) {
-        Log.i("", "In clickedMyMoods() of LogMoods");
-        myMoodsList = new MyMoodsList();
-        fragmentTransaction = fragmentManager.beginTransaction();
-       // fragmentTransaction.remove(moodFragment);
+            dbTest.insertMoodData("Happy", "Happy2", null, null, 0.66, "MoodAnnotation", null, null, null);
+            fragmentTransaction.replace(R.id.blankFragment, moodFragment, "LOG_SEARCH_fragment");
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-        //fragmentTransaction.add(R.id.frameLayout, myMoodsList);
-        fragmentTransaction.replace(R.id.frameLayout,myMoodsList);
-        fragmentTransaction.commit();
+
+
+
     }
 
    // public void onMyMoodsListViewClick(View view){
@@ -82,7 +70,7 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
    // }
 
     public void onFragmentInteraction(Uri uri){
-        Log.i("","We are here in the activity...yay");
+
     }
 
 
