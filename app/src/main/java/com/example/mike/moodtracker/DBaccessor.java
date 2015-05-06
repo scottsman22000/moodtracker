@@ -1,8 +1,9 @@
 package com.example.mike.moodtracker;
-
+import java.util.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.database.*;
 import android.util.Log;
 /**
  * Created by HP on 5/1/2015.
@@ -11,7 +12,7 @@ import android.util.Log;
 public class DBaccessor extends SQLiteOpenHelper {
 
     public DBaccessor(Context applicationcontext) {
-        super(applicationcontext, "mooddb3.db", null, 1);
+        super(applicationcontext, "mooddb5.db", null, 1);
 
     }
 
@@ -32,6 +33,16 @@ public class DBaccessor extends SQLiteOpenHelper {
                     moodString : Text to store mood (ie sad)
                     coping id : Int to store coping ID, ie mad -> 2 where 2 could be deep breathing
          */
+
+        db.execSQL("DROP TABLE IF EXISTS MOOD;");
+        db.execSQL("DROP TABLE IF EXISTS TRIGGER;");
+        db.execSQL("DROP TABLE IF EXISTS BELIEF;");
+        db.execSQL("DROP TABLE IF EXISTS BEHAVIOR;");
+        db.execSQL("DROP TABLE IF EXISTS MOOD_DATA;");
+        db.execSQL("DROP TABLE IF EXISTS COPING_STRATEGY;");
+        db.execSQL("DROP TABLE IF EXISTS PREF_TABLE;");
+
+
         String CREATE_MOOD_TABLE = "CREATE TABLE " +
                 "MOOD" + "("
                 + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT," + "moodString"
@@ -200,6 +211,74 @@ public class DBaccessor extends SQLiteOpenHelper {
         db.execSQL(data);
     }
 
+
+    public List<String> getAllMoods(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM MOOD", null);
+
+        cursor.moveToFirst();
+        do {
+            //Log.d("DB", cursor.getString((1)));
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+    }
+
+    public List<String> getAllTriggers(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM TRIGGER", null);
+
+        cursor.moveToFirst();
+        do {
+            //Log.d("DB", cursor.getString((1)));
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+    }
+
+    public List<String> getAllBehaviors(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM BEHAVIOR", null);
+
+        cursor.moveToFirst();
+        do {
+            //Log.d("DB", cursor.getString((1)));
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+    }
+
+    public List<String> getAllBeliefs(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<String> returnList = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM BELIEF", null);
+
+        cursor.moveToFirst();
+        do {
+            //Log.d("DB", cursor.getString((1)));
+            returnList.add(cursor.getString(1));
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+
+        return returnList;
+    }
 
 
 }

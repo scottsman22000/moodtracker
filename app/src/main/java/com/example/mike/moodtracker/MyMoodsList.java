@@ -17,6 +17,9 @@ import android.widget.ArrayAdapter;
 
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.content.Context;
+import android.widget.TextView;
 
 
 
@@ -40,16 +43,17 @@ public class MyMoodsList extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    public String[] listOfMoods = {"Happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed","Anxious", "Calm", "Cranky", "Stressed"};
-
+    private List<String> moodList;
+    public String[] listOfMoods;
 
     public ArrayAdapter arrayAdapter;
     public ListView lv;
     public View layoutLIst;
     public Context ctx;
-
     public EditText moodToBeDisplayed;
+    public EditText moodText;
     public EditText intesityText;
+
 
     public String pickedMood = null;
 
@@ -85,7 +89,9 @@ public class MyMoodsList extends Fragment {
         }
 
         ctx = getActivity().getApplicationContext();
-
+        DBaccessor d = new DBaccessor(ctx);
+         moodList = d.getAllMoods();
+         listOfMoods = moodList.toArray(new String[moodList.size()]);
     }
 
     @Override
@@ -98,12 +104,7 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        lv.setOnItemClickListener(new ListClickHandler());
-        //EditText x = container.findViewById(R.id.textPickedMood);
-        Log.i("","this code got run before the view woas trying to update");
-        //moodToBeDisplayed = new EditText(ctx);
         moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
-
 
         return view;
     }

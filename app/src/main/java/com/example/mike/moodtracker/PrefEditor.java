@@ -7,7 +7,7 @@ import android.app.Activity;
 public class PrefEditor extends Activity{
 
     public void changeBG(){
-        //change background of app
+        //change background of app 
     }
 
 }
