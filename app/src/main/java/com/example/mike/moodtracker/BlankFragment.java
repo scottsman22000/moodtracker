@@ -39,6 +39,7 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
     //FragmentTransaction fragmentTransaction = fragmentManager.
    // MyMoodsList myMoodsList = new MyMoodsList();
    MyMoodsList myMoodsList;
+    MoodsList moodsList;
 
     /**
      * Use this factory method to create a new instance of
@@ -124,12 +125,17 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
        LogMoods activity = (LogMoods) getActivity();
        activity.onMyMoodsClick(v);
    }
-
-
+    public void onMoodsClick(View v){
+        Log.i("","clicked Moods button");
+        FindPatterns activity = (FindPatterns) getActivity();
+        activity.onMoodsClick(v);
+    }
 
     public void onFragmentInteraction(Uri uri){
         LogMoods activity = (LogMoods) getActivity();
+        FindPatterns patternActivity = (FindPatterns) getActivity();
         activity.onFragmentInteraction(uri);
+        patternActivity.onFragmentInteraction(uri);
         Log.i("", "called the fragmentINteraction in the blanckFragment calss");
     }
 
