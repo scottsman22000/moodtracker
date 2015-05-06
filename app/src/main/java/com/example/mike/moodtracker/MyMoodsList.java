@@ -52,10 +52,10 @@ public class MyMoodsList extends Fragment {
     public View layoutLIst;
     public Context ctx;
 
-    public EditText moodText;
+    public EditText moodToBeDisplayed;
     public EditText intesityText;
 
-    public String pickedMood;
+    public String pickedMood = null;
 
 
     /**
@@ -103,6 +103,11 @@ public class MyMoodsList extends Fragment {
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
         lv.setOnItemClickListener(new ListClickHandler());
+        //EditText x = container.findViewById(R.id.textPickedMood);
+        Log.i("","this code got run before the view woas trying to update");
+        //moodToBeDisplayed = new EditText(ctx);
+        moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
+
 
         return view;
     }
@@ -156,9 +161,15 @@ public class MyMoodsList extends Fragment {
             //int itemPosition     = position;
 
             // ListView Clicked item value
-           pickedMood    = (String) lv.getItemAtPosition(position);
-            moodText = (EditText) view.findViewById(R.id.textPickedMood);
-            moodText.setText(pickedMood);
+           pickedMood = (String) lv.getItemAtPosition(position);
+            //moodText = (EditText) findViewById(R.id.textPickedMood);
+            Log.i("", "this is the pickedMood the firsst time: " + pickedMood);
+            //moodToBeDisplayed = new EditText(ctx);
+           // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
+
+
+
+            moodToBeDisplayed.setText(pickedMood);
 
             Log.i("", "this is the pickedMood: " + pickedMood);
 
