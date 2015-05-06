@@ -5,7 +5,7 @@ import java.util.*;
 public class PrefEditor extends Activity{
 
     public void changeBG(){
-        //change background
+        //change background of app
     }
 
 }
