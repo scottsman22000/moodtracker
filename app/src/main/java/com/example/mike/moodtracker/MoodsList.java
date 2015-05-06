@@ -1,45 +1,47 @@
 package com.example.mike.moodtracker;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BlankFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInteractionListener, MoodsList.OnFragmentInteractionListener{
+
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+
+public class MoodsList extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public Button btn;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    public String[] listOfMoods = {"Happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed","Anxious", "Calm", "Cranky", "Stressed"};
 
-    //FragmentManager fragmentManager = getFragmentManager();
-    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    //FragmentTransaction fragmentTransaction = fragmentManager.
-   // MyMoodsList myMoodsList = new MyMoodsList();
-   MyMoodsList myMoodsList;
-    MoodsList moodsList;
+
+    public ArrayAdapter arrayAdapter;
+    public ListView lv;
+    public View layoutLIst;
+
+    public Context ctx;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -47,11 +49,11 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment MoodsList.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String param1, String param2) {
-        BlankFragment fragment = new BlankFragment();
+    public static MoodsList newInstance(String param1, String param2) {
+        MoodsList fragment = new MoodsList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,7 +61,7 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
         return fragment;
     }
 
-    public BlankFragment() {
+    public MoodsList() {
         // Required empty public constructor
     }
 
@@ -70,15 +72,32 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        ctx = getActivity().getApplicationContext();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-      //  btn = (Button) getView().findViewById(R.id.MyMoodsButton);
-        //btn.setOnClickListener(this);
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+
+
+
+
+        View view = inflater.inflate(R.layout.fragment_moods_list, container, false);
+
+
+        layoutLIst = view.findViewById(R.id.layoutForList);
+
+        lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
+
+        arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
+
+        lv.setAdapter(arrayAdapter);
+
+        lv.setTextFilterEnabled(true);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -118,25 +137,6 @@ public class BlankFragment extends Fragment implements MyMoodsList.OnFragmentInt
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
-    }
-
-   public void onMyMoodsClick(View v){
-       Log.i("","clicked myMoods button");
-       LogMoods activity = (LogMoods) getActivity();
-       activity.onMyMoodsClick(v);
-   }
-    public void onMoodsClick(View v){
-        Log.i("","clicked Moods button");
-        FindPatterns activity = (FindPatterns) getActivity();
-        activity.onMyMoodsClick(v);
-    }
-
-    public void onFragmentInteraction(Uri uri){
-        LogMoods activity = (LogMoods) getActivity();
-        FindPatterns patternActivity = (FindPatterns) getActivity();
-        activity.onFragmentInteraction(uri);
-        patternActivity.onFragmentInteraction(uri);
-        Log.i("", "called the fragmentINteraction in the blanckFragment calss");
     }
 
 }
