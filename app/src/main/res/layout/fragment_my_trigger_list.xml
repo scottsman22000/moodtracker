@@ -19,7 +19,6 @@
         android:layout_height="250dp"
         android:layout_gravity="left|top"
         android:id="@+id/layoutForList"
-        android:background="#ff71ff32"
         android:visibility="visible"
         android:weightSum="1">
 
@@ -31,7 +30,8 @@
             android:visibility="visible"
             android:textFilterEnabled="true"
             android:layout_weight="0.78"
-            android:clickable="false" />
+            android:clickable="false"
+            android:layout_marginTop="5dp" />
 
 
     </LinearLayout>

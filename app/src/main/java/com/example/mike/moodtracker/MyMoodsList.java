@@ -14,15 +14,17 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 
 /**
@@ -51,11 +53,9 @@ public class MyMoodsList extends Fragment {
     public ListView lv;
     public View layoutLIst;
     public Context ctx;
-    public TextView moodToBeDisplayed;
+    public EditText moodToBeDisplayed;
     public EditText moodText;
     public EditText intesityText;
-    public EditText annotationBox;
-    public String annotationMessage;
 
 
     public String pickedMood = null;
@@ -107,21 +107,7 @@ public class MyMoodsList extends Fragment {
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        lv.setOnItemClickListener(new ListClickHandler());
-        moodToBeDisplayed = (TextView)view.findViewById(R.id.textMoodPicked);
-        annotationBox = (EditText)view.findViewById(R.id.annotationText);
-        Button button = (Button) view.findViewById(R.id.AnnotationButton);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                annotationMessage = annotationBox.getText().toString();
-                Log.i("","thisis the annotation message that is bieng saved: "+annotationMessage);
-                annotationBox.clearFocus();
-
-            }
-        });
+        moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
 
         return view;
     }
@@ -170,8 +156,18 @@ public class MyMoodsList extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> arrayAdapter, View view, int position, long arg3) {
             // TODO Auto-generated method stub
+            //TextView listText = (TextView) view.findViewById(R.id.listViewInLayout).findViewById(android.R.id);
+             //pickedMood = listText.getText().toString();
+            //int itemPosition     = position;
+
+            // ListView Clicked item value
            pickedMood = (String) lv.getItemAtPosition(position);
+            //moodText = (EditText) findViewById(R.id.textPickedMood);
             Log.i("", "this is the pickedMood the firsst time: " + pickedMood);
+            //moodToBeDisplayed = new EditText(ctx);
+           // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
+
+
 
             moodToBeDisplayed.setText(pickedMood);
 

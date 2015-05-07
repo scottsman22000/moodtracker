@@ -4,4 +4,9 @@
     tools:context="com.example.mike.moodtracker.LogMoods">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item
+        android:id="@+id/acceptButton"
+        android:title="Accept"
+        android:icon="@drawable/ic_action_name"
+        app:showAsAction="always" />
 </menu>

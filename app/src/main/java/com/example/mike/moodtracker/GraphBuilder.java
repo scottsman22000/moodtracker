@@ -3,12 +3,20 @@ package com.example.mike.moodtracker;
 import java.util.*;
 
 import android.app.Activity;
+import android.content.Context;
 
 public class GraphBuilder extends Activity{
 
     ArrayList<MoodData> moodData;
     Date startTime;
     Date endTime;
+    private Context context;
+    private DBaccessor dba;
+
+    public GraphBuilder(Context context) {
+        this.context = context;
+        this.dba = new DBaccessor(context);
+    }
 
     public MoodData getData(Date startTime, Date endTime, int graphType, Mood mood){
         //pull mood data between two times and of matching mood and stores them in mood data

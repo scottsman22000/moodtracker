@@ -27,7 +27,7 @@
         android:onClick="createFindPatternsPage"/>
 
     <Button
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="Get Help"
         android:id="@+id/GetHelpButton"
@@ -47,7 +47,7 @@
     <Button
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:text="App Prefs"
+        android:text="App Pref"
         android:id="@+id/AppPreffsButton"
         android:layout_alignBottom="@+id/AppHelpButton"
         android:layout_toRightOf="@+id/AppHelpButton"

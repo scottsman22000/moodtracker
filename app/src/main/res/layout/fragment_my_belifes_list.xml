@@ -4,7 +4,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/hello_blank_fragment"
+        android:layout_marginTop="5dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -21,7 +22,6 @@
         android:layout_height="250dp"
         android:layout_gravity="left|top"
         android:id="@+id/layoutForList"
-        android:background="#ff71ff32"
         android:visibility="visible"
         android:weightSum="1">
 
@@ -33,7 +33,8 @@
             android:visibility="visible"
             android:textFilterEnabled="true"
             android:layout_weight="0.78"
-            android:clickable="false" />
+            android:clickable="false"
+            android:layout_marginTop="5dp" />
 
 
     </LinearLayout>
@@ -42,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Belife: "
+        android:text="Belief:"
         android:id="@+id/textView4"
         android:layout_gravity="center|bottom|left"
         android:layout_marginBottom="65dp" />
