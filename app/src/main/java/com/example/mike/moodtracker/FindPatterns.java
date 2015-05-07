@@ -80,6 +80,20 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         fragmentTransaction.commit();
     }
 
+    public void onSearchTriggersClick(View v) {
+
+    }
+
+    public void onSearchMoodsClick(View v) {
+        moodFragment = new BlankFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        // fragmentTransaction.remove(moodFragment);
+
+        //fragmentTransaction.add(R.id.frameLayout, moodFragment);
+        fragmentTransaction.replace(R.id.frameLayout, moodFragment);
+
+        fragmentTransaction.commit();
+    }
 
     public void onMyMoodsClick(View v) {
         Log.i("", "In clickedMoods() of FindPatterns");

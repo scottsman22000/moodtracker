@@ -40,6 +40,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mike.moodtracker.FindPatterns" />
         </activity>
+        <activity
+            android:name=".gaphActivity"
+            android:label="@string/title_activity_gaph"></activity>
     </application>
 
 </manifest>

@@ -104,13 +104,18 @@ public class TableBuilder extends ActionBarActivity {
 
     public String buildTable(GregorianCalendar startTime, GregorianCalendar endTime, Mood mood) {
         ArrayList<MoodData> moodData2 = new ArrayList<MoodData>(dba.getMoodDataBetweenDates(buildString(startTime), buildString(endTime)));
+
+        Log.d("d", "MoodData2: " + Integer.toString(moodData2.size()));
         ArrayList<MoodData> moodData = new ArrayList<>();
         String output = "";
         //filter
         for (MoodData m : moodData2) {
+            Log.d("Check", String.format("m.mood.mood = %s ::: mood.mood = %s", m.mood.mood, mood.mood));
             if (m.mood.mood.equals(mood.mood))
                 moodData.add(m);
         }
+        Log.d("d", "MoodData: " + Integer.toString(moodData.size()));
+
 //        for(MoodData m: moodData)
 //        {
 //            System.err.print(m.mood.mood + " " + m.trigger.trigger + "\n");
@@ -163,6 +168,7 @@ public class TableBuilder extends ActionBarActivity {
 //        ArrayList<Integer> triggerValues = new ArrayList<>(triggerHash.values());
         ArrayList<Duple> triggerDuples = new ArrayList<>();
         for (String s : triggerHash.keySet()) {
+            Log.d("v", triggerHash.get(s).toString());
             triggerDuples.add(new Duple(s, triggerHash.get(s)));
         }
 

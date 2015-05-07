@@ -182,71 +182,85 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
 
 
     public void submitMoodDataToDatabase() {
-        String moodData;
-        String triggerData;
-        String behaviorData;
-        String beliefData;
-
-        if (mood.mood != null) {
-            if (mood.mood.mood != null) {
-                moodData = mood.mood.mood;
+        String moodData = "";
+        String triggerData = "";
+        String behaviorData = "";
+        String beliefData = "";
+        if (mood != null) {
+            if (mood.mood != null) {
+                if (mood.mood.mood != null) {
+                    moodData = mood.mood.mood;
+                } else {
+                    moodData = "";
+                }
             } else {
                 moodData = "";
             }
-        } else {
-            moodData = "";
-        }
 
-        if (mood.trigger != null) {
-            if (mood.trigger.trigger != null) {
-                triggerData = mood.trigger.trigger;
+            if (mood.trigger != null) {
+                if (mood.trigger.trigger != null) {
+                    triggerData = mood.trigger.trigger;
+                } else {
+                    triggerData = "";
+                }
             } else {
                 triggerData = "";
             }
-        } else {
-            triggerData = "";
-        }
 
-        if (mood.behavior != null) {
-            if (mood.behavior.behavior != null) {
-                behaviorData = mood.behavior.behavior;
+            if (mood.behavior != null) {
+                if (mood.behavior.behavior != null) {
+                    behaviorData = mood.behavior.behavior;
+                } else {
+                    behaviorData = "";
+                }
             } else {
                 behaviorData = "";
             }
-        } else {
-            behaviorData = "";
-        }
 
-        if (mood.belief != null) {
-            if (mood.belief.belief != null) {
-                beliefData = mood.belief.belief;
+            if (mood.belief != null) {
+                if (mood.belief.belief != null) {
+                    beliefData = mood.belief.belief;
+                } else {
+                    beliefData = "";
+                }
             } else {
                 beliefData = "";
             }
-        } else {
-            beliefData = "";
         }
 
 
-        new AlertDialog.Builder(this)
-                .setTitle("Mood Data Added")
-                .setMessage(String.format("The following data has been entered: Mood: %s\nTrigger: %s\nBehavior: %s\nBelief: %s", moodData, triggerData, behaviorData, beliefData)) //mood.trigger.trigger, mood.behavior.behavior, mood.belief.belief))
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
-                        // mood = new MoodData();
-                        Intent myIntent = new Intent(LogMoods.this, MainActivity.class);
-                        LogMoods.this.startActivity(myIntent);
+        if (mood != null) {
+            if (mood.mood == null) {
+                new AlertDialog.Builder(this).setTitle("Invalid Mood Entry")
+                        .setMessage("There must be a mood associated with an entry!") //mood.trigger.trigger, mood.behavior.behavior, mood.belief.belief))
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            } else {
+                new AlertDialog.Builder(this).setTitle("Mood Data Added")
+                        .setMessage(String.format("The following data has been entered: Mood: %s\nTrigger: %s\nBehavior: %s\nBelief: %s", moodData, triggerData, behaviorData, beliefData)) //mood.trigger.trigger, mood.behavior.behavior, mood.belief.belief))
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                // mood = new MoodData();
+                                Intent myIntent = new Intent(LogMoods.this, MainActivity.class);
+                                LogMoods.this.startActivity(myIntent);
 
-                        Intent intent = new Intent(LogMoods.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                                Intent intent = new Intent(LogMoods.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
 
 
+        }
     }
 
 

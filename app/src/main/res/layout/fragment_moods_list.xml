@@ -7,18 +7,16 @@
         android:layout_height="400dp"
         android:layout_gravity="left|center_vertical"
         android:id="@+id/layoutForList"
-        android:background="#ff71ff32"
         android:visibility="visible"
         android:weightSum="1">
 
         <ListView
             android:layout_width="161dp"
-            android:layout_height="297dp"
+            android:layout_height="286dp"
             android:id="@+id/listViewInLayout"
             android:background="#fffffbc7"
             android:visibility="visible"
             android:textFilterEnabled="true"
-            android:layout_weight="0.78"
             android:layout_marginTop="25dp" />
     </LinearLayout>
 </FrameLayout>

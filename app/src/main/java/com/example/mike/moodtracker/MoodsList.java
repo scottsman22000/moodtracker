@@ -38,7 +38,7 @@ public class MoodsList extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    public String[] listOfMoods = {"Happy", "Sad", "Angry", "Excited", "Lonely" , "Depressed","Anxious", "Calm", "Cranky", "Stressed"};
+    public String[] listOfMoods;
 
 
     public ArrayAdapter arrayAdapter;
@@ -95,6 +95,9 @@ public class MoodsList extends Fragment {
         View view = inflater.inflate(R.layout.fragment_moods_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
+        DBaccessor d = new DBaccessor(getActivity().getApplicationContext());
+        List<String> moodList = d.getAllMoods();
+        listOfMoods = moodList.toArray(new String[moodList.size()]);//this needs to be a list of Belifes
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
@@ -167,6 +170,7 @@ public class MoodsList extends Fragment {
             //moodToBeDisplayed.setText(pickedMood);
 
             Log.i("", "this is the pickedMood: " + pickedMood);
+            FindPatterns.mood = new Mood(pickedMood, 0, "");
 
 
         }

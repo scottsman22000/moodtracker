@@ -21,8 +21,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-        this.deleteDatabase("mooddb5.db");
-        setUpDatabase();
+        //this.deleteDatabase("mooddb5.db");
+        //setUpDatabase();
     }
     public void setUpDatabase(){
         DBaccessor d = new DBaccessor(this.getApplicationContext());
@@ -85,7 +85,6 @@ public class MainActivity extends ActionBarActivity {
 
         //add test moodData
 
-
         for (int x = 0; x < 25; x++) {
             Random r = new Random();
             List<String> moods = d.getAllMoods();
@@ -129,6 +128,7 @@ public class MainActivity extends ActionBarActivity {
             d.insertMoodData(mood, trigger, belief, behavior, moodIntensity, null, null, null, null);
 
         }
+
     }
 
     @Override
@@ -164,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void createGetHelpPage(View view) {
-        //Intent intent = new Intent(this, GetHelp.class);//i need to add the kind of activity that i want
+        //intent intent = new Intent(this, GetHelp.class);//i need to add the kind of activity that i want
         //startActivity(intent);
     }
 
