@@ -1,6 +1,7 @@
 package com.example.mike.moodtracker;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,7 +19,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    this.deleteDatabase("mooddb5.db");
+
+
+        this.deleteDatabase("mooddb5.db");
         setUpDatabase();
     }
     public void setUpDatabase(){
@@ -83,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
         //add test moodData
 
 
-        for (int x = 0; x < 1000; x++) {
+        for (int x = 0; x < 25; x++) {
             Random r = new Random();
             List<String> moods = d.getAllMoods();
 

@@ -16,10 +16,14 @@ import android.widget.Button;
 /**
  * Created by Mahoney on 5/5/2015.
  */
-public class FindPatterns extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MoodsList.OnFragmentInteractionListener {
+public class FindPatterns extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MoodsList.OnFragmentInteractionListener, TriggerFragment.OnFragmentInteractionListener, TriggersList.OnFragmentInteractionListener {
 
     BlankFragment moodFragment;
+    TriggerFragment triggerFragment;
+    BelifeFragment beliefFragment;
+    BehaviorsFragment behaviorFragment;
     MoodsList MoodsList;
+    TriggersList triggersList;
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -77,6 +81,13 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         fragmentTransaction.commit();
     }
 
+    public void onTriggerClick(View v){
+        triggerFragment = new TriggerFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, triggerFragment);
+        fragmentTransaction.commit();
+    }
+
 
     public void onMyMoodsClick(View v) {
         Log.i("", "In clickedMoods() of FindPatterns");
@@ -94,6 +105,13 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         Intent intent = new Intent(this, TableBuilder.class);//i need to add the kind of activity that i want
         intent.putExtra("mood", mood_happy);
         startActivity(intent);
+    }
+
+    public void onMyTriggerListClick(View v){
+        triggersList = new TriggersList();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, triggersList);
+        fragmentTransaction.commit();
     }
 
     public void onFragmentInteraction(Uri uri){

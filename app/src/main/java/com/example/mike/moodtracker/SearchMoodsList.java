@@ -95,7 +95,7 @@ public class SearchMoodsList extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_moods_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
@@ -113,9 +113,10 @@ public class SearchMoodsList extends Fragment {
             public void onClick(View v)
             {
                 annotationMessage = annotationBox.getText().toString();
-                Log.i("","thisis the annotation message that is bieng saved: "+annotationMessage);
+                Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
 
+                logDataAndCloseFragment(pickedMood, annotationMessage, 0.0);
             }
         });
 
@@ -123,6 +124,15 @@ public class SearchMoodsList extends Fragment {
         return view;
     }
 
+    public void logDataAndCloseFragment(String mood, String annotation, double intensity) {
+        LogMoods activity = (LogMoods) getActivity();
+        MoodData d = activity.getMoodData();
+        MoodData newData = d;
+        d.mood = new Mood(mood, (float) intensity, annotation);
+        activity.setMoodData(d);
+
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
