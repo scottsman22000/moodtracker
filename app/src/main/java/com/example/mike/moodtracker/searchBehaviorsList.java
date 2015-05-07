@@ -2,6 +2,7 @@ package com.example.mike.moodtracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -113,6 +114,7 @@ public class searchBehaviorsList extends Fragment {
                 annotationMessage = annotationBox.getText().toString();
                 Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
+                logDataAndCloseFragment(pickedMood, annotationMessage);
 
             }
         });
@@ -122,6 +124,32 @@ public class searchBehaviorsList extends Fragment {
         return view;
     }
 
+    public void logDataAndCloseFragment(String behavior, String annotation) {
+        LogMoods activity = (LogMoods) getActivity();
+        MoodData d = activity.getMoodData();
+        MoodData newData = new MoodData();
+        if (d.mood != null) {
+            newData.mood = d.mood;
+        }
+        if (d.trigger != null) {
+            newData.trigger = d.trigger;
+        }
+        if (d.behavior != null) {
+            newData.behavior = d.behavior;
+        }
+        if (d.belief != null) {
+            newData.belief = d.belief;
+        }
+
+
+        //  MoodData newData = new MoodData(new Mood(mood, (float) intensity, annotation));
+        newData.behavior = new Behavior(behavior, annotation);
+        activity.setMoodData(newData);
+
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        Button button = (Button) getActivity().findViewById(R.id.BehaviorButton);
+        button.setBackgroundColor(Color.RED);
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

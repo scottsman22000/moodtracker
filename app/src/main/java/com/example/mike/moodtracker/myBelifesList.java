@@ -2,6 +2,7 @@ package com.example.mike.moodtracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -94,7 +95,7 @@ public class myBelifesList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_belifes_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_belifes_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
@@ -112,12 +113,41 @@ public class myBelifesList extends Fragment {
                 annotationMessage = annotationBox.getText().toString();
                 Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
-                //testing
 
+                logDataAndCloseFragment(pickedMood, annotationMessage);
 
             }
         });
+
         return view;
+
+    }
+
+    public void logDataAndCloseFragment(String belief, String annotation) {
+        LogMoods activity = (LogMoods) getActivity();
+        MoodData d = activity.getMoodData();
+        MoodData newData = new MoodData();
+        if (d.mood != null) {
+            newData.mood = d.mood;
+        }
+        if (d.trigger != null) {
+            newData.trigger = d.trigger;
+        }
+        if (d.behavior != null) {
+            newData.behavior = d.behavior;
+        }
+        if (d.belief != null) {
+            newData.belief = d.belief;
+        }
+
+
+        //  MoodData newData = new MoodData(new Mood(mood, (float) intensity, annotation));
+        newData.belief = new Belief(belief, annotation);
+        activity.setMoodData(newData);
+
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        Button button = (Button) getActivity().findViewById(R.id.BelifeButton);
+        button.setBackgroundColor(Color.RED);
     }
 
 

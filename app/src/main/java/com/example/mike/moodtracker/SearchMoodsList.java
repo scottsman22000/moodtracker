@@ -2,6 +2,7 @@ package com.example.mike.moodtracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -93,6 +95,7 @@ public class SearchMoodsList extends Fragment {
         listOfMoods = moodList.toArray(new String[moodList.size()]);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
@@ -107,6 +110,8 @@ public class SearchMoodsList extends Fragment {
         moodToBeDisplayed = (TextView)view.findViewById(R.id.textMoodPicked);
         annotationBox = (EditText)view.findViewById(R.id.annotationText);
         Button button = (Button) view.findViewById(R.id.AnnotationButton);
+        SeekBar bar = (SeekBar) view.findViewById(R.id.seekBar);
+        final double barValue = bar.getProgress(); //idk why this needs to be final
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -116,7 +121,8 @@ public class SearchMoodsList extends Fragment {
                 Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
 
-                logDataAndCloseFragment(pickedMood, annotationMessage, 0.0);
+                logDataAndCloseFragment(pickedMood, annotationMessage, barValue);
+
             }
         });
 
@@ -127,12 +133,31 @@ public class SearchMoodsList extends Fragment {
     public void logDataAndCloseFragment(String mood, String annotation, double intensity) {
         LogMoods activity = (LogMoods) getActivity();
         MoodData d = activity.getMoodData();
-        MoodData newData = d;
-        d.mood = new Mood(mood, (float) intensity, annotation);
-        activity.setMoodData(d);
+        MoodData newData = new MoodData();
+        if (d.mood != null) {
+            newData.mood = d.mood;
+        }
+        if (d.trigger != null) {
+            newData.trigger = d.trigger;
+        }
+        if (d.behavior != null) {
+            newData.behavior = d.behavior;
+        }
+        if (d.belief != null) {
+            newData.belief = d.belief;
+        }
+
+
+        //  MoodData newData = new MoodData(new Mood(mood, (float) intensity, annotation));
+        newData.mood = new Mood(mood, (float) intensity, annotation);
+        activity.setMoodData(newData);
 
         getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        Button button = (Button) getActivity().findViewById(R.id.MoodButton);
+        button.setBackgroundColor(Color.RED);
     }
+
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
