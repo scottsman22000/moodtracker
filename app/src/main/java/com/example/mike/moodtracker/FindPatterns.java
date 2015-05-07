@@ -23,6 +23,18 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    Mood mood;
+    Trigger trigger;
+    Belief belief;
+    Behavior behavior;
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +92,7 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
     public void onTableClick(View v){
         Log.i("", "clicked table in findpatterns");
         Intent intent = new Intent(this, TableBuilder.class);//i need to add the kind of activity that i want
+        intent.putExtra("mood", mood_happy);
         startActivity(intent);
     }
 
