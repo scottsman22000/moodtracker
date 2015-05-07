@@ -32,9 +32,9 @@ public class TableBuilder extends ActionBarActivity {
         // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
         TextView t = (TextView) findViewById(R.id.table);
         if (FindPatterns.mood != null)
-            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.mood));
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016, 1, 1), FindPatterns.mood));
         else if (FindPatterns.trigger != null)
-            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.trigger));
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016, 1, 1), FindPatterns.trigger));
 
     }
 

@@ -127,17 +127,19 @@ public class myBelifesList extends Fragment {
         LogMoods activity = (LogMoods) getActivity();
         MoodData d = activity.getMoodData();
         MoodData newData = new MoodData();
-        if (d.mood != null) {
-            newData.mood = d.mood;
-        }
-        if (d.trigger != null) {
-            newData.trigger = d.trigger;
-        }
-        if (d.behavior != null) {
-            newData.behavior = d.behavior;
-        }
-        if (d.belief != null) {
-            newData.belief = d.belief;
+        if (d != null) {
+            if (d.mood != null) {
+                newData.mood = d.mood;
+            }
+            if (d.trigger != null) {
+                newData.trigger = d.trigger;
+            }
+            if (d.behavior != null) {
+                newData.behavior = d.behavior;
+            }
+            if (d.belief != null) {
+                newData.belief = d.belief;
+            }
         }
 
 

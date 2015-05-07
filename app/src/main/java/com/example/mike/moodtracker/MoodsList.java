@@ -104,14 +104,14 @@ public class MoodsList extends Fragment {
         //Button button = (Button) view.findViewById(R.id.AnnotationButton);
         //button.setOnClickListener(new View.OnClickListener()
         //{
-            //@Override
-           // public void onClick(View v)
-            //{
-                //annotationMessage = annotationBox.getText().toString();
-                //Log.i("","this is the annotation message that is being saved: "+annotationMessage);
-                //annotationBox.clearFocus();
+        //@Override
+        // public void onClick(View v)
+        //{
+        //annotationMessage = annotationBox.getText().toString();
+        //Log.i("","this is the annotation message that is being saved: "+annotationMessage);
+        //annotationBox.clearFocus();
 
-            //}
+        //}
         //});
 
         return view;

@@ -124,20 +124,23 @@ public class MyTriggerList extends Fragment {
         LogMoods activity = (LogMoods) getActivity();
         MoodData d = activity.getMoodData();
         MoodData newData = new MoodData();
-        if (d.mood != null) {
-            newData.mood = d.mood;
+        if (d != null) {
+            if (d.mood != null) {
+                newData.mood = d.mood;
+            }
+            if (d.trigger != null) {
+                newData.trigger = d.trigger;
+            }
+            if (d.behavior != null) {
+                newData.behavior = d.behavior;
+            }
+            if (d.belief != null) {
+                newData.belief = d.belief;
+            }
         }
-        if (d.trigger != null) {
-            newData.trigger = d.trigger;
-        }
-        if (d.behavior != null) {
-            newData.behavior = d.behavior;
-        }
-        if (d.belief != null) {
-            newData.belief = d.belief;
-        }
+
         newData.trigger = new Trigger(trigger, annotation);
-        activity.setMoodData(d);
+        activity.setMoodData(newData);
 
         getActivity().getFragmentManager().beginTransaction().remove(this).commit();
         Button button = (Button) getActivity().findViewById(R.id.TriggerButton);

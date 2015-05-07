@@ -56,14 +56,21 @@
         android:textSize="15dp"
         android:singleLine="false" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Annotation"
-        android:id="@+id/AnnotationButton"
-        android:layout_gravity="right|bottom"
-        android:onClick="onAnnotationClick"
-        android:layout_marginBottom="150dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="361dp"
+        android:layout_height="113dp"
+        android:layout_gravity="right|bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Next >>"
+            android:id="@+id/AnnotationButton"
+            android:layout_gravity="right"
+            android:onClick="onAnnotationClick"
+            android:layout_marginBottom="150dp" />
+    </LinearLayout>
 
 
 </FrameLayout>

@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by Mahoney on 5/6/2015.
  */
-public class TriggersList extends Fragment{
+public class TriggersList extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -100,14 +100,14 @@ public class TriggersList extends Fragment{
         //Button button = (Button) view.findViewById(R.id.AnnotationButton);
         //button.setOnClickListener(new View.OnClickListener()
         //{
-          //  @Override
-           // public void onClick(View v)
-            //{
-              //  annotationMessage = annotationBox.getText().toString();
-               // Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
-                //annotationBox.clearFocus();
+        //  @Override
+        // public void onClick(View v)
+        //{
+        //  annotationMessage = annotationBox.getText().toString();
+        // Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
+        //annotationBox.clearFocus();
 
-            //}
+        //}
         //});
 
         return view;
@@ -167,7 +167,6 @@ public class TriggersList extends Fragment{
             Log.i("", "this is the pickedtrigger the firsst time: " + pickedMood);
             //moodToBeDisplayed = new EditText(ctx);
             // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
-
 
 
             //moodToBeDisplayed.setText(pickedMood);

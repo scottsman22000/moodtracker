@@ -163,7 +163,7 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void createGetHelpPage(View view){
+    public void createGetHelpPage(View view) {
         //Intent intent = new Intent(this, GetHelp.class);//i need to add the kind of activity that i want
         //startActivity(intent);
     }
