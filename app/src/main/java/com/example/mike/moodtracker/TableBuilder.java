@@ -31,8 +31,11 @@ public class TableBuilder extends ActionBarActivity {
         Log.i("", "in onCreate of FindPatterns??????????????????????????????????????");
         // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
         TextView t = (TextView) findViewById(R.id.table);
-        if (FindPatterns.mood != null)
+        if (FindPatterns.mood != null) {
+            Log.d(":D", "D:");
             t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.mood));
+            Log.d("", new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.mood));
+        }
         else if (FindPatterns.trigger != null)
             t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.trigger));
 
@@ -78,7 +81,7 @@ public class TableBuilder extends ActionBarActivity {
     }
 
     public static void main(String[] args) {
-//        //test
+        //test
 //        for (int i = 0; i < 10000; i++) {
 //            MoodData m = new MoodData(new Mood("" + Math.floor(Math.random() * 5), 1.0f, ""));
 //            m.trigger = new Trigger("" + Math.floor(Math.random() * 5), "");
@@ -86,8 +89,7 @@ public class TableBuilder extends ActionBarActivity {
 //            m.belief = new Belief("" + Math.floor(Math.random() * 5), "");
 //            fakeData.add(m);
 //        }
-        //new TableBuilder().buildTable(null, null, new Mood("Tender", 0, ""));
-        GregorianCalendar g = new GregorianCalendar();
+        GregorianCalendar g = new GregorianCalendar(2015, 04, 07);
         System.err.print(buildString(g));
     }
 
