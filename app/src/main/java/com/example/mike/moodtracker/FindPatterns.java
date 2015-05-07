@@ -27,18 +27,10 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-    Mood mood;
-    Trigger trigger;
-    Belief belief;
-    Behavior behavior;
-
-    public Mood getMood() {
-        return mood;
-    }
-
-    public void setMood(Mood mood) {
-        this.mood = mood;
-    }
+    public static Mood mood;
+    public static Trigger trigger;
+    public static Belief belief;
+    public static Behavior behavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +90,15 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         //fragmentTransaction.add(R.id.frameLayout, myMoodsList);
         fragmentTransaction.replace(R.id.frameLayout,MoodsList);
         fragmentTransaction.commit();
+        mood = new Mood(MoodsList.pickedMood, 0, "");
+        trigger = null;
+
     }
 
     public void onTableClick(View v){
         Log.i("", "clicked table in findpatterns");
         Intent intent = new Intent(this, TableBuilder.class);//i need to add the kind of activity that i want
-        intent.putExtra("mood", mood_happy);
+        //intent.putExtra("mood", mood_happy);
         startActivity(intent);
     }
 
@@ -112,6 +107,8 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, triggersList);
         fragmentTransaction.commit();
+        mood = null;
+        trigger = new Trigger(triggersList.pickedMood, "");
     }
 
     public void onFragmentInteraction(Uri uri){
