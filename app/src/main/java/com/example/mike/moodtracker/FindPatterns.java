@@ -77,6 +77,12 @@ public class FindPatterns extends ActionBarActivity implements BlankFragment.OnF
         fragmentTransaction.commit();
     }
 
+    public void onTableClick(View v){
+        Log.i("", "clicked table in findpatterns");
+        Intent intent = new Intent(this, TableBuilder.class);//i need to add the kind of activity that i want
+        startActivity(intent);
+    }
+
     public void onFragmentInteraction(Uri uri){
         Log.i("","We are here in the activity...yay");
     }
