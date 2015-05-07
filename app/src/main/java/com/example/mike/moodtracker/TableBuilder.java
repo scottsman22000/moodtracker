@@ -10,6 +10,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 
 import java.util.*;
 import java.text.*;
@@ -23,10 +25,17 @@ public class TableBuilder extends ActionBarActivity {
     private DBaccessor dba;
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_builder);
         Log.i("", "in onCreate of FindPatterns??????????????????????????????????????");
         // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
+        TextView t = (TextView) findViewById(R.id.table);
+        if (FindPatterns.mood != null)
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.mood));
+        else if (FindPatterns.trigger != null)
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.trigger));
+
     }
 
     @Override
@@ -92,12 +101,13 @@ public class TableBuilder extends ActionBarActivity {
     }
 
     public String buildTable(GregorianCalendar startTime, GregorianCalendar endTime, Mood mood) {
-        ArrayList<MoodData> moodData = new ArrayList<MoodData>(dba.getMoodDataBetweenDates(buildString(startTime), buildString(endTime)));
+        ArrayList<MoodData> moodData2 = new ArrayList<MoodData>(dba.getMoodDataBetweenDates(buildString(startTime), buildString(endTime)));
+        ArrayList<MoodData> moodData = new ArrayList<>();
         String output = "";
         //filter
-        for (MoodData m : moodData) {
+        for (MoodData m : moodData2) {
             if (!m.mood.mood.equals(mood.mood))
-                moodData.remove(m);
+                moodData.add(m);
         }
         //endfilter
         /*//mood
