@@ -116,42 +116,6 @@ public class TableBuilder extends ActionBarActivity {
         }
         Log.d("d", "MoodData: " + Integer.toString(moodData.size()));
 
-//        for(MoodData m: moodData)
-//        {
-//            System.err.print(m.mood.mood + " " + m.trigger.trigger + "\n");
-//        }
-        //System.exit(0);
-        //endfilter
-        /*//mood
-        Hashtable<String, Integer> moodHash = new Hashtable<>();
-        for (MoodData m : moodData) {
-            Integer mood;
-            if(m.mood.mood != null)
-                if ((mood = moodHash.get(m.mood.mood)) == null)
-                   moodHash.put(m.mood.mood, 1);
-                 else
-                   moodHash.put(m.mood.mood, mood + 1);
-        }
-        ArrayList<String> moods = new ArrayList<>(moodHash.keySet());
-        ArrayList<Integer> moodValues = new ArrayList<>(moodHash.values());
-
-        ArrayList<Duple> moodMax = new ArrayList<>();
-        for (int i = 0; i < moodValues.size(); i++) {
-            if (moodMax.size() < NUMBER_OF_MAXIMUMS) {
-                moodMax.add(new Duple(i, moodValues.get(i)));
-                Collections.sort(moodMax);
-            } else if (moodMax.get(0).value < moodValues.get(i)) {
-                moodMax.remove(0);
-                moodMax.add(new Duple(i, moodValues.get(i)));
-                Collections.sort(moodMax);
-            }
-        }
-        output += "Moods:\n";
-        for (int i = NUMBER_OF_MAXIMUMS - 1; i >= 0; i--) {
-            output += moods.get(moodMax.get(i).index) + ": " + df.format(moodValues.get(moodMax.get(i).index) / (float) moodData.size()) + "\n";
-        }
-        output += "\n";
-        //end mood*/
         //trigger
         Hashtable<String, Integer> triggerHash = new Hashtable<>();
         for (MoodData m : moodData) {
@@ -164,100 +128,89 @@ public class TableBuilder extends ActionBarActivity {
                     triggerHash.put(m.trigger.trigger, trigger + 1);
                 }
         }
-//        ArrayList<String> triggers = new ArrayList<>(triggerHash.keySet());
-//        ArrayList<Integer> triggerValues = new ArrayList<>(triggerHash.values());
+
         ArrayList<Duple> triggerDuples = new ArrayList<>();
         for (String s : triggerHash.keySet()) {
             Log.d("v", triggerHash.get(s).toString());
-            triggerDuples.add(new Duple(s, triggerHash.get(s)));
+            if (s != null)
+                triggerDuples.add(new Duple(s, triggerHash.get(s)));
+            else
+                triggerDuples.add(new Duple("None", triggerHash.get(s)));
         }
 
-        //ArrayList<Duple> triggerMax = new ArrayList<>();
         Collections.sort(triggerDuples);
         Collections.reverse(triggerDuples);
-//        for(int i = 0; i < NUMBER_OF_MAXIMUMS; i++) {
-//            triggerMax.add(triggerDuples.remove(triggerDuples.size()-1));
-//        }
-//        for (int i = 0; i < triggerValues.size(); i++) {
-//            if (triggerMax.size() < NUMBER_OF_MAXIMUMS) {
-//                triggerMax.add(new Duple(i, triggerValues.get(i)));
-//                Collections.sort(triggerMax);
-//            } else if (triggerMax.get(0).value < triggerValues.get(i)) {
-//                triggerMax.remove(0);
-//                triggerMax.add(new Duple(i, triggerValues.get(i)));
-//                Collections.sort(triggerMax);
-//            }
-//        }
+
         output += "Triggers:\n";
-//        for (int i = NUMBER_OF_MAXIMUMS - 1; i >= 0; i--) {
-//            output += triggers.get(triggerMax.get(i).index) + ": " + df.format(triggerValues.get(triggerMax.get(i).index) / (float) moodData.size()) + "\n";
-//        }
+
         for (int i = 0; i < NUMBER_OF_MAXIMUMS; i++)
             output += triggerDuples.get(i).index + ": " + df.format(triggerDuples.get(i).value / (float) moodData.size()) + "\n";
         output += "\n";
         //end trigger
-//        //belief
-//        Hashtable<String, Integer> beliefHash = new Hashtable<>();
-//        for (MoodData m : moodData) {
-//            Integer belief;
-//            if (m.belief.belief != null)
-//                if ((belief = beliefHash.get(m.belief.belief)) == null)
-//                    beliefHash.put(m.belief.belief, 1);
-//                else
-//                    beliefHash.put(m.belief.belief, belief + 1);
-//        }
-//        ArrayList<String> beliefs = new ArrayList<>(beliefHash.keySet());
-//        ArrayList<Integer> beliefValues = new ArrayList<>(beliefHash.values());
-//
-//        ArrayList<Duple> beliefMax = new ArrayList<>();
-//        for (int i = 0; i < beliefValues.size(); i++) {
-//            if (beliefMax.size() < NUMBER_OF_MAXIMUMS) {
-//                beliefMax.add(new Duple(i, beliefValues.get(i)));
-//                Collections.sort(beliefMax);
-//            } else if (beliefMax.get(0).value < beliefValues.get(i)) {
-//                beliefMax.remove(0);
-//                beliefMax.add(new Duple(i, beliefValues.get(i)));
-//                Collections.sort(beliefMax);
-//            }
-//        }
-//        output += "Beliefs:\n";
-//        for (int i = NUMBER_OF_MAXIMUMS - 1; i >= 0; i--) {
-//            output += beliefs.get(beliefMax.get(i).index) + ": " + df.format(beliefValues.get(beliefMax.get(i).index) / (float) moodData.size()) + "\n";
-//        }
-//        output += "\n";
-//        //end belief
-//        //behavior
-//        Hashtable<String, Integer> behaviorHash = new Hashtable<>();
-//        for (MoodData m : moodData) {
-//            Integer behavior;
-//            if (m.behavior.behavior != null)
-//                if ((behavior = behaviorHash.get(m.behavior.behavior)) == null)
-//                    behaviorHash.put(m.behavior.behavior, 1);
-//                else
-//                    behaviorHash.put(m.behavior.behavior, behavior + 1);
-//        }
-//        ArrayList<String> behaviors = new ArrayList<>(behaviorHash.keySet());
-//        ArrayList<Integer> behaviorValues = new ArrayList<>(behaviorHash.values());
-//
-//        ArrayList<Duple> behaviorMax = new ArrayList<>();
-//        for (int i = 0; i < behaviorValues.size(); i++) {
-//            if (behaviorMax.size() < NUMBER_OF_MAXIMUMS) {
-//                behaviorMax.add(new Duple(i, behaviorValues.get(i)));
-//                Collections.sort(behaviorMax);
-//            } else if (behaviorMax.get(0).value < behaviorValues.get(i)) {
-//                behaviorMax.remove(0);
-//                behaviorMax.add(new Duple(i, behaviorValues.get(i)));
-//                Collections.sort(behaviorMax);
-//            }
-//        }
-//        output += "Behaviors:\n";
-//        for (int i = NUMBER_OF_MAXIMUMS - 1; i >= 0; i--) {
-//            output += behaviors.get(behaviorMax.get(i).index) + ": " + df.format(behaviorValues.get(behaviorMax.get(i).index) / (float) moodData.size()) + "\n";
-//        }
-//        output += "\n";
+
+        //belief
+        Hashtable<String, Integer> beliefHash = new Hashtable<>();
+        for (MoodData m : moodData) {
+            Integer belief;
+            if (m.belief != null && m.belief.belief != null)//changed!
+                if ((belief = beliefHash.get(m.belief.belief)) == null)
+                    beliefHash.put(m.belief.belief, 1);
+                else {
+                    beliefHash.remove(m.belief);
+                    beliefHash.put(m.belief.belief, belief + 1);
+                }
+        }
+
+        ArrayList<Duple> beliefDuples = new ArrayList<>();
+        for (String s : beliefHash.keySet()) {
+            Log.d("v", beliefHash.get(s).toString());
+            if (s != null)
+                beliefDuples.add(new Duple(s, beliefHash.get(s)));
+            else
+                beliefDuples.add(new Duple("None", beliefHash.get(s)));
+        }
+
+        Collections.sort(beliefDuples);
+        Collections.reverse(beliefDuples);
+
+        output += "Beliefs:\n";
+
+        for (int i = 0; i < NUMBER_OF_MAXIMUMS; i++)
+            output += beliefDuples.get(i).index + ": " + df.format(beliefDuples.get(i).value / (float) moodData.size()) + "\n";
+        output += "\n";
+        //end belief
+
+        //behavior
+        Hashtable<String, Integer> behaviorHash = new Hashtable<>();
+        for (MoodData m : moodData) {
+            Integer behavior;
+            if (m.behavior != null && m.behavior.behavior != null)//changed!
+                if ((behavior = behaviorHash.get(m.behavior.behavior)) == null)
+                    behaviorHash.put(m.behavior.behavior, 1);
+                else {
+                    behaviorHash.remove(m.behavior);
+                    behaviorHash.put(m.behavior.behavior, behavior + 1);
+                }
+        }
+
+        ArrayList<Duple> behaviorDuples = new ArrayList<>();
+        for (String s : behaviorHash.keySet()) {
+            Log.d("v", behaviorHash.get(s).toString());
+            if (s != null)
+                behaviorDuples.add(new Duple(s, behaviorHash.get(s)));
+            else
+                behaviorDuples.add(new Duple("None", behaviorHash.get(s)));
+        }
+
+        Collections.sort(behaviorDuples);
+        Collections.reverse(behaviorDuples);
+
+        output += "Behaviors:\n";
+
+        for (int i = 0; i < NUMBER_OF_MAXIMUMS; i++)
+            output += behaviorDuples.get(i).index + ": " + df.format(behaviorDuples.get(i).value / (float) moodData.size()) + "\n";
+        output += "\n";
         //end behavior
-
-
         return (output);
 
     }

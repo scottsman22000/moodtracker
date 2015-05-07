@@ -85,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
 
         //add test moodData
 
-        for (int x = 0; x < 25; x++) {
+        for (int x = 0; x < 45; x++) {
             Random r = new Random();
             List<String> moods = d.getAllMoods();
 
@@ -98,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
 
             int triggerCheck = r.nextInt(100);
 
-            if (triggerCheck >= 25) { //75% probability to get trigger
+            if (triggerCheck >= 10) { //75% probability to get trigger
                 List<String> pTriggers = d.getTriggerFromCopingID(coping);
                 trigger = pTriggers.get(r.nextInt(pTriggers.size()));
             } else {
@@ -107,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
 
             int beliefCheck = r.nextInt(100);
 
-            if (beliefCheck <= 30) {
+            if (beliefCheck <= 90) {
                 List<String> pBeliefs = d.getBeliefsFromCopingID(coping);
                 belief = pBeliefs.get(r.nextInt(pBeliefs.size()));
             } else {
@@ -116,7 +116,7 @@ public class MainActivity extends ActionBarActivity {
 
             int behaviorCheck = r.nextInt(100);
 
-            if (behaviorCheck <= 20) {
+            if (behaviorCheck <= 90) {
                 List<String> pBehaviors = d.getBehaviorFromCopingID(coping);
                 behavior = pBehaviors.get(r.nextInt(pBehaviors.size()));
             } else {
