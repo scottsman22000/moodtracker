@@ -10,6 +10,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 
 import java.util.*;
 import java.text.*;
@@ -28,10 +30,11 @@ public class TableBuilder extends ActionBarActivity {
         setContentView(R.layout.activity_table_builder);
         Log.i("", "in onCreate of FindPatterns??????????????????????????????????????");
         // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
+        TextView t = (TextView) findViewById(R.id.table);
         if (FindPatterns.mood != null)
-            new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.mood);
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.mood));
         else if (FindPatterns.trigger != null)
-            new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.trigger);
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(), FindPatterns.trigger));
 
     }
 
