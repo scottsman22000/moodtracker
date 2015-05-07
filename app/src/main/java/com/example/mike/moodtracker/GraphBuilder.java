@@ -5,6 +5,7 @@ import java.util.*;
 import android.app.Activity;
 import android.content.Context;
 
+//very incomplete
 public class GraphBuilder extends Activity{
 
     ArrayList<MoodData> moodData;
@@ -41,6 +42,6 @@ public class GraphBuilder extends Activity{
         }
         //horizontal positions are stored in horizontalPosition from 0.0 to 1.0
         //vertical positions are stored in moodData.mood.intensity from 0.0 to 1.0
-        //find a graphing tool that lets you do this
+        //TODO: Should have added a way to graph this data, but ran out of time
     }
 }
