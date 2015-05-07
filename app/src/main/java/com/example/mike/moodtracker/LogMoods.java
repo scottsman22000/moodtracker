@@ -14,7 +14,9 @@ import android.view.View;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
-
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import java.util.*;
 
 public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragmentInteractionListener, MyMoodsList.OnFragmentInteractionListener, SearchMoodsList.OnFragmentInteractionListener, TriggerFragment.OnFragmentInteractionListener , MyTriggerList.OnFragmentInteractionListener, searchTriggerList.OnFragmentInteractionListener, BelifeFragment.OnFragmentInteractionListener, myBelifesList.OnFragmentInteractionListener, searchBelifesList.OnFragmentInteractionListener, BehaviorsFragment.OnFragmentInteractionListener, searchBehaviorsList.OnFragmentInteractionListener, MyBehaviorsList.OnFragmentInteractionListener {
@@ -35,6 +37,7 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     searchBehaviorsList searchBehaviorsList;
     MyBehaviorsList myBehaviorsList;
     MoodData mood;
+
 
 
 
@@ -64,6 +67,9 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.acceptButton) {
+            submitMoodDataToDatabase();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -175,9 +181,20 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     }
 
 
+    public void submitMoodDataToDatabase() {
 
-
-
+        new AlertDialog.Builder(this)
+                .setTitle("Mood Data Added")
+                .setMessage(String.format("The following data has been entered: Mood: %s\nTrigger: %s\nBehavior: \nBelief: ", mood.mood.mood, mood.behavior)) //mood.trigger.trigger, mood.behavior.behavior, mood.belief.belief))
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        // mood = new MoodData();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
 
 
 

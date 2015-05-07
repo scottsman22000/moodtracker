@@ -297,7 +297,8 @@ public class DBaccessor extends SQLiteOpenHelper {
             Trigger t = new Trigger(cursor.getString(3), cursor.getString(8));
             Belief be = new Belief(cursor.getString(4), cursor.getString(9));
             Behavior bh = new Behavior(cursor.getString(5), cursor.getString(10));
-            MoodData md = new MoodData(m);
+            MoodData md = new MoodData();
+            md.mood = m;
             md.behavior = bh;
             md.belief = be;
             md.trigger = t;

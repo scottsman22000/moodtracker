@@ -2,6 +2,7 @@ package com.example.mike.moodtracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -92,11 +93,12 @@ public class searchTriggerList extends Fragment {
         listOfMoods = moodList.toArray(new String[moodList.size()]);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search_trigger_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_trigger_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
@@ -114,11 +116,35 @@ public class searchTriggerList extends Fragment {
                 annotationMessage = annotationBox.getText().toString();
                 Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
-
+                logDataAndCloseFragment(pickedMood, annotationMessage);
             }
         });
 
         return view;
+    }
+
+    public void logDataAndCloseFragment(String trigger, String annotation) {
+        LogMoods activity = (LogMoods) getActivity();
+        MoodData d = activity.getMoodData();
+        MoodData newData = new MoodData();
+        if (d.mood != null) {
+            newData.mood = d.mood;
+        }
+        if (d.trigger != null) {
+            newData.trigger = d.trigger;
+        }
+        if (d.behavior != null) {
+            newData.behavior = d.behavior;
+        }
+        if (d.belief != null) {
+            newData.belief = d.belief;
+        }
+        newData.trigger = new Trigger(trigger, annotation);
+        activity.setMoodData(d);
+
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        Button button = (Button) getActivity().findViewById(R.id.TriggerButton);
+        button.setBackgroundColor(Color.RED);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

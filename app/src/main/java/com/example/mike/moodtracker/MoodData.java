@@ -12,8 +12,8 @@ public class MoodData {
     Behavior behavior;
     GregorianCalendar timeStamp;
 
-    public MoodData(Mood mood) {
-        this.mood = mood;
+    public MoodData() {
+
     }
 
 }

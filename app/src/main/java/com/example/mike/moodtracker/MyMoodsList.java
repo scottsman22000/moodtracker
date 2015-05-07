@@ -2,6 +2,7 @@ package com.example.mike.moodtracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -14,17 +15,16 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 
 /**
@@ -53,9 +53,11 @@ public class MyMoodsList extends Fragment {
     public ListView lv;
     public View layoutLIst;
     public Context ctx;
-    public EditText moodToBeDisplayed;
+    public TextView moodToBeDisplayed;
     public EditText moodText;
     public EditText intesityText;
+    public EditText annotationBox;
+    public String annotationMessage;
 
 
     public String pickedMood = null;
@@ -99,18 +101,65 @@ public class MyMoodsList extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_my_moods_list, container, false);
+                             final Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_search_moods_list, container, false);
         layoutLIst = view.findViewById(R.id.layoutForList);
         lv = (ListView) layoutLIst.findViewById(R.id.listViewInLayout);
         arrayAdapter = new ArrayAdapter(layoutLIst.getContext(), android.R.layout.simple_list_item_1, listOfMoods);
         lv.setAdapter(arrayAdapter);
         lv.setTextFilterEnabled(true);
-        moodToBeDisplayed = (EditText)view.findViewById(R.id.textMoodPicked);
+        lv.setOnItemClickListener(new ListClickHandler());
+        moodToBeDisplayed = (TextView)view.findViewById(R.id.textMoodPicked);
+        annotationBox = (EditText)view.findViewById(R.id.annotationText);
+        Button button = (Button) view.findViewById(R.id.AnnotationButton);
+        SeekBar bar = (SeekBar) view.findViewById(R.id.seekBar);
+        final double barValue = bar.getProgress(); //idk why this needs to be final
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                annotationMessage = annotationBox.getText().toString();
+                Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
+                annotationBox.clearFocus();
+
+                logDataAndCloseFragment(pickedMood, annotationMessage, barValue);
+
+            }
+        });
+
 
         return view;
     }
+
+    public void logDataAndCloseFragment(String mood, String annotation, double intensity) {
+        LogMoods activity = (LogMoods) getActivity();
+        MoodData d = activity.getMoodData();
+        MoodData newData = new MoodData();
+        if (d.mood != null) {
+            newData.mood = d.mood;
+        }
+        if (d.trigger != null) {
+            newData.trigger = d.trigger;
+        }
+        if (d.behavior != null) {
+            newData.behavior = d.behavior;
+        }
+        if (d.belief != null) {
+            newData.belief = d.belief;
+        }
+
+
+        //  MoodData newData = new MoodData(new Mood(mood, (float) intensity, annotation));
+        newData.mood = new Mood(mood, (float) intensity, annotation);
+        activity.setMoodData(newData);
+
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        Button button = (Button) getActivity().findViewById(R.id.MoodButton);
+        button.setBackgroundColor(Color.RED);
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -156,18 +205,8 @@ public class MyMoodsList extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> arrayAdapter, View view, int position, long arg3) {
             // TODO Auto-generated method stub
-            //TextView listText = (TextView) view.findViewById(R.id.listViewInLayout).findViewById(android.R.id);
-             //pickedMood = listText.getText().toString();
-            //int itemPosition     = position;
-
-            // ListView Clicked item value
            pickedMood = (String) lv.getItemAtPosition(position);
-            //moodText = (EditText) findViewById(R.id.textPickedMood);
             Log.i("", "this is the pickedMood the firsst time: " + pickedMood);
-            //moodToBeDisplayed = new EditText(ctx);
-           // moodToBeDisplayed = (EditText) findViewById(R.id.textMoodPicked);
-
-
 
             moodToBeDisplayed.setText(pickedMood);
 
