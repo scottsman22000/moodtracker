@@ -86,7 +86,7 @@ public class MyBehaviorsList extends Fragment {
         }
         ctx = getActivity().getApplicationContext();
         DBaccessor d = new DBaccessor(ctx);//Zach this might need to be updated, i copied from the myMOods LIst and this is my TriggersLIst
-        moodList = d.getAllTriggers();
+        moodList = d.getAllBehaviors();
         listOfMoods = moodList.toArray(new String[moodList.size()]);//this needs to be a list of triggers
     }
 

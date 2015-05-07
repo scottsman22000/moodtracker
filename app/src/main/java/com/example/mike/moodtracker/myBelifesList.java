@@ -112,11 +112,14 @@ public class myBelifesList extends Fragment {
                 annotationMessage = annotationBox.getText().toString();
                 Log.i("", "thisis the annotation message that is bieng saved: " + annotationMessage);
                 annotationBox.clearFocus();
+                //testing
+
 
             }
         });
         return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

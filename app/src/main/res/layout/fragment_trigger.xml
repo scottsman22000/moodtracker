@@ -4,25 +4,32 @@
     tools:context="com.example.mike.moodtracker.TriggerFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Triggers"
-        android:id="@+id/SearchTriggersButton"
-        android:layout_gravity="center"
-        android:onClick="onSearchTriggersClick"
-        android:layout_marginLeft="30dp"
-        android:nestedScrollingEnabled="false" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_gravity="left|top">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Triggers"
-        android:id="@+id/MyTriggersButton"
-        android:layout_gravity="left|center_vertical"
-        android:onClick="onMyTriggerListClick" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Triggers"
+            android:id="@+id/MyTriggersButton"
+            android:layout_gravity="left|center_vertical"
+            android:onClick="onMyTriggerListClick"
+            android:layout_row="5"
+            android:layout_column="4" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search Triggers"
+            android:id="@+id/SearchTriggersButton"
+            android:onClick="onSearchTriggersClick"
+            android:layout_marginLeft="30dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_row="5"
+            android:layout_column="24" />
+    </GridLayout>
 
 </FrameLayout>

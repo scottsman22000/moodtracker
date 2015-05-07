@@ -34,6 +34,7 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
     BehaviorsFragment behaviorsFragment;
     searchBehaviorsList searchBehaviorsList;
     MyBehaviorsList myBehaviorsList;
+    MoodData mood;
 
 
 
@@ -80,6 +81,13 @@ public class LogMoods extends ActionBarActivity implements BlankFragment.OnFragm
         fragmentTransaction.commit();
     }
 
+    public MoodData getMoodData() {
+        return mood;
+    }
+
+    public void setMoodData(MoodData d) {
+        mood = d;
+    }
     public void onTriggerClick(View v){
         triggerFragment = new TriggerFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
