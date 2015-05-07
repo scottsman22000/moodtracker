@@ -32,7 +32,7 @@ public class TableBuilder extends ActionBarActivity {
         // Intent intent = getIntent();//I was supposed to add this//dont seem to need this
         TextView t = (TextView) findViewById(R.id.table);
         if (FindPatterns.mood != null)
-            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.mood));
+            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016, 1, 1), FindPatterns.mood));
 //        else if (FindPatterns.trigger != null)
 //            t.setText(new TableBuilder(getApplicationContext()).buildTable(new GregorianCalendar(1970, 1, 1), new GregorianCalendar(2016,1,1), FindPatterns.trigger));
 
@@ -162,8 +162,7 @@ public class TableBuilder extends ActionBarActivity {
 //        ArrayList<String> triggers = new ArrayList<>(triggerHash.keySet());
 //        ArrayList<Integer> triggerValues = new ArrayList<>(triggerHash.values());
         ArrayList<Duple> triggerDuples = new ArrayList<>();
-        for (String s : triggerHash.keySet())
-        {
+        for (String s : triggerHash.keySet()) {
             triggerDuples.add(new Duple(s, triggerHash.get(s)));
         }
 
@@ -187,8 +186,8 @@ public class TableBuilder extends ActionBarActivity {
 //        for (int i = NUMBER_OF_MAXIMUMS - 1; i >= 0; i--) {
 //            output += triggers.get(triggerMax.get(i).index) + ": " + df.format(triggerValues.get(triggerMax.get(i).index) / (float) moodData.size()) + "\n";
 //        }
-        for(int i = 0; i < NUMBER_OF_MAXIMUMS; i++)
-            output += triggerDuples.get(i).index + ": " +  df.format(triggerDuples.get(i).value/(float)moodData.size())+"\n";
+        for (int i = 0; i < NUMBER_OF_MAXIMUMS; i++)
+            output += triggerDuples.get(i).index + ": " + df.format(triggerDuples.get(i).value / (float) moodData.size()) + "\n";
         output += "\n";
         //end trigger
 //        //belief
